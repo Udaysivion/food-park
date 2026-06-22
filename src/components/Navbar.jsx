@@ -1,57 +1,54 @@
-import { Link, useLocation } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
-  const location = useLocation();
-
-  const links = [
-    { name: 'Home', path: '/' },
-    { name: 'Mess Menu', path: '/menu' },
-    { name: 'About Mess', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+const Navbar = () => {
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Traditional Dishes", path: "/traditional-dishes" },
+    { label: "Menu", path: "/menu" },
+    { label: "Gallery", path: "/gallery" },
+    { label: "Contact", path: "/contact" },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-slate-900 border-b border-slate-800 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo Section */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-amber-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-black text-xl">M</span>
-            </div>
-            <span className="font-extrabold text-2xl tracking-tight text-white">
-              Military<span className="text-amber-500">Mess</span>
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {links.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`text-sm font-semibold tracking-wide uppercase transition-colors duration-200 ${
-                    isActive 
-                      ? 'text-amber-500' 
-                      : 'text-slate-300 hover:text-amber-500'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Call to Action */}
-          <div className="hidden md:flex items-center">
-            <button className="bg-amber-600 hover:bg-amber-700 text-slate-950 font-bold px-6 py-2.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg">
-              Mess Registry
-            </button>
-          </div>
+    <header className="fixed left-0 top-0 z-50 w-full px-4 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-[#D4A017]/30 bg-[#F8F1E7]/85 px-6 py-3 shadow-xl backdrop-blur-md">
+        {/* Logo */}
+        <div>
+          <h1 className="font-serif text-2xl font-bold tracking-wide text-[#6B0F0F]">
+            Food Park
+          </h1>
+          <p className="-mt-1 text-[11px] font-medium tracking-[0.25em] text-[#3A1E12]/70">
+            VILLAGE HOTEL
+          </p>
         </div>
-      </div>
-    </nav>
+
+        {/* Links */}
+        <ul className="hidden items-center gap-8 lg:flex">
+          {navItems.map((item) => (
+            <li key={item.label} className="group text-sm font-semibold uppercase tracking-wide">
+              <Link
+                to={item.path}
+                className="cursor-pointer text-[#3A1E12] transition hover:text-[#6B0F0F]"
+              >
+                {item.label}
+                <span className="mx-auto mt-1 block h-[2px] w-0 rounded-full bg-[#D4A017] transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Button */}
+        <button className="hidden rounded-full bg-[#6B0F0F] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#D4A017] hover:text-[#3A1E12] md:block">
+          Reserve Table
+        </button>
+
+        {/* Mobile Icon */}
+        <button className="text-2xl text-[#6B0F0F] lg:hidden">☰</button>
+      </nav>
+    </header>
   );
-}
+};
+
+export default Navbar;

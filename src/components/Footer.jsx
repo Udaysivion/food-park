@@ -1,66 +1,57 @@
-import { Link } from 'react-router-dom';
+import React from "react";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-16 pb-8 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand details */}
-          <div className="md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">M</span>
-              </div>
-              <span className="font-extrabold text-xl tracking-tight text-white">
-                Military<span className="text-amber-500">Mess</span>
-              </span>
-            </Link>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Official catering and mess services ensuring top nutrition, strict schedules, and healthy dining options.
+    <footer className="bg-[#2A140C] text-white">
+      <div className="mx-auto max-w-7xl px-6 py-14">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h2 className="font-serif text-3xl font-bold text-[#D4A017]">
+              Food Park
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-gray-300">
+              Authentic Andhra village cuisine served with homely hospitality.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white border-b border-slate-800 pb-2 inline-block">Schedules</h3>
-            <ul className="space-y-3">
-              <li><Link to="/menu" className="text-slate-400 hover:text-amber-500 transition-colors duration-200">Daily Menu</Link></li>
-              <li><Link to="/about" className="text-slate-400 hover:text-amber-500 transition-colors duration-200">Our Protocol</Link></li>
-              <li><Link to="/contact" className="text-slate-400 hover:text-amber-500 transition-colors duration-200">Contact Quartermaster</Link></li>
+            <h3 className="mb-4 font-semibold text-[#D4A017]">Quick Links</h3>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li>Home</li>
+              <li>About</li>
+              <li>Traditional Dishes</li>
+              <li>Menu</li>
+              <li>Gallery</li>
+              <li>Contact</li>
             </ul>
           </div>
 
-          {/* Guidelines */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white border-b border-slate-800 pb-2 inline-block">Mess Protocol</h3>
-            <ul className="space-y-3 text-slate-400 text-sm">
-              <li>• Dress code enforced.</li>
-              <li>• Adhere strictly to meal timings.</li>
-              <li>• Present Mess Card at registry.</li>
+            <h3 className="mb-4 font-semibold text-[#D4A017]">Contact</h3>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li>📍 Nizamabad, Telangana</li>
+              <li>📞 +91 98765 43210</li>
+              <li>✉ info@ruchilokam.com</li>
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white border-b border-slate-800 pb-2 inline-block">Headquarters</h3>
-            <ul className="space-y-3 text-slate-400 text-sm">
-              <li className="flex items-start gap-3">
-                <span>📍</span>
-                <span>Base Mess Hall Alpha, Camp Garrison</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span>📞</span>
-                <span>DSN: 555-MESS (Ext. 101)</span>
-              </li>
+            <h3 className="mb-4 font-semibold text-[#D4A017]">
+              Opening Hours
+            </h3>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li>Mon - Fri: 8 AM - 10 PM</li>
+              <li>Sat - Sun: 7 AM - 11 PM</li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-slate-900 text-center md:flex md:justify-between items-center text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Military Mess Command. All rights reserved.</p>
+        <div className="mt-10 border-t border-white/10 pt-5 text-center text-xs text-gray-400">
+          © 2026 Food park. All Rights Reserved.
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
