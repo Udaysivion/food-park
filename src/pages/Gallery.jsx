@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar";
+import { useState } from "react";
 import Footer from "../components/Footer";
 
 const Gallery = () => {
@@ -32,8 +31,6 @@ const Gallery = () => {
 
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
-      <Navbar />
-
       <section className="relative bg-[#3A1E12] pt-32 pb-24">
         <div className="mx-auto max-w-7xl px-6 text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[5px] text-[#D4A017]">

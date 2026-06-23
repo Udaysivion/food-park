@@ -1,12 +1,8 @@
-import React from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const TraditionalDishes = () => {
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
-      <Navbar />
-
       {/* Traditional Dishes Hero */}
       <section className="relative bg-[#3A1E12] pt-32 pb-20">
         <div className="mx-auto max-w-7xl px-6 text-center">

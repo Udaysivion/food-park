@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar";
+import { useState } from "react";
 import Footer from "../components/Footer";
 
 const Contact = () => {
@@ -22,8 +21,6 @@ const Contact = () => {
 
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative min-h-[620px] overflow-hidden">
         <img
@@ -186,9 +183,9 @@ const Contact = () => {
               authentic village dining experience.
             </p>
 
-            <button className="mt-8 rounded-full bg-[#3A1E12] px-7 py-3 font-semibold text-white">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Nizamabad%2C%20Telangana" target="_blank" rel="noreferrer" className="mt-8 inline-block rounded-full bg-[#3A1E12] px-7 py-3 font-semibold text-white">
               Get Directions
-            </button>
+            </a>
           </div>
 
           <iframe

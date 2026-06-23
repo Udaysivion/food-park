@@ -1,5 +1,3 @@
-import React from "react";
-
 const AboutHero = () => {
   return (
     <>
@@ -10,12 +8,12 @@ const AboutHero = () => {
               About Us
             </p>
 
-            <h1 className="mx-auto max-w-4xl font-serif text-5xl font-bold leading-tight text-[#6B0F0F] md:text-7xl">
+            <h1 className="mx-auto max-w-full font-serif text-2xl font-bold leading-snug text-[#6B0F0F] sm:text-3xl md:text-4xl lg:whitespace-nowrap lg:text-[1.75rem] xl:text-[2rem]">
               Bringing Traditional Andhra Flavors To Every Table
             </h1>
           </div>
 
-          <div className="relative mt-14 overflow-hidden rounded-[3rem] shadow-2xl">
+          <div className="relative mt-10 overflow-hidden rounded-[3rem] shadow-2xl">
             <img
               src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80"
               alt="Village hotel ambience"

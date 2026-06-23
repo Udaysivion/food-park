@@ -1,12 +1,9 @@
-import React from "react";
-import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
-      <Navbar />
-
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -39,13 +36,27 @@ const Home = () => {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <button className="rounded-full bg-[#6B0F0F] px-8 py-4 font-semibold text-white transition hover:scale-105">
-                Reserve Table
-              </button>
+              <a
+                href="https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-[#FC8019] px-8 py-4 font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-[#e66f0d]"
+              >
+                Order on Swiggy
+              </a>
 
-              <button className="rounded-full border border-[#D4A017] px-8 py-4 font-semibold text-white backdrop-blur-md transition hover:bg-[#D4A017] hover:text-black">
+              <a
+                href="https://www.zomato.com/kakinada/food-park-family-restaurant-1-kakinada-locality/order"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-[#E23744] px-8 py-4 font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-[#c92f3b]"
+              >
+                Order on Zomato
+              </a>
+
+              <Link to="/menu" className="rounded-full border border-[#D4A017] px-8 py-4 font-semibold text-white backdrop-blur-md transition hover:bg-[#D4A017] hover:text-black">
                 Explore Menu
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -123,9 +134,9 @@ const Home = () => {
         </h2>
       </div>
 
-      <button className="w-fit rounded-full border border-[#6B0F0F] px-7 py-3 font-semibold text-[#6B0F0F] transition hover:bg-[#6B0F0F] hover:text-white">
+      <Link to="/menu" className="w-fit rounded-full border border-[#6B0F0F] px-7 py-3 font-semibold text-[#6B0F0F] transition hover:bg-[#6B0F0F] hover:text-white">
         View Full Menu
-      </button>
+      </Link>
     </div>
 
     <div className="grid gap-8 md:grid-cols-3">
@@ -167,9 +178,9 @@ const Home = () => {
               {dish.desc}
             </p>
 
-            <button className="mt-6 font-semibold text-[#D4A017]">
+            <Link to="/traditional-dishes" className="mt-6 inline-block font-semibold text-[#D4A017]">
               Explore Dish →
-            </button>
+            </Link>
           </div>
         </div>
       ))}
@@ -223,9 +234,9 @@ const Home = () => {
         </div>
       </div>
 
-      <button className="mt-9 rounded-full bg-[#6B0F0F] px-8 py-4 font-semibold text-white transition hover:bg-[#3A1E12]">
+      <Link to="/about" className="mt-9 inline-block rounded-full bg-[#6B0F0F] px-8 py-4 font-semibold text-white transition hover:bg-[#3A1E12]">
         Know More About Us
-      </button>
+      </Link>
     </div>
   </div>
 </section>
@@ -242,7 +253,27 @@ const Home = () => {
       </h2>
     </div>
 
-    <div className="mt-16 grid gap-8 lg:grid-cols-3">
+    <div className="relative">
+      <div className="absolute right-0 top-0 flex gap-3">
+        <a
+          href="https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full px-5 py-3 font-semibold text-white shadow-2xl bg-gradient-to-r from-[#ff9a2e] to-[#ff6b00] transition-transform hover:-translate-y-1"
+        >
+          Swiggy
+        </a>
+        <a
+          href="https://www.zomato.com/kakinada/food-park-family-restaurant-1-kakinada-locality/order"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full px-5 py-3 font-semibold text-white shadow-2xl bg-gradient-to-r from-[#f03b4b] to-[#d93a4a] transition-transform hover:-translate-y-1"
+        >
+          Zomato
+        </a>
+      </div>
+
+      <div className="mt-16 grid gap-8 lg:grid-cols-3">
       {[
         {
           title: "Village Meals",
@@ -261,13 +292,9 @@ const Home = () => {
           key={index}
           className="rounded-[2rem] border border-[#D4A017]/20 bg-white p-8 shadow-lg transition hover:-translate-y-2 hover:shadow-2xl"
         >
-          <div className="mb-5 flex items-center justify-between">
+          <div className="mb-5">
             <span className="rounded-full bg-[#D4A017]/10 px-4 py-2 text-sm font-semibold text-[#6B0F0F]">
               Special
-            </span>
-
-            <span className="font-bold text-[#D4A017]">
-              {item.price}
             </span>
           </div>
 
@@ -279,9 +306,7 @@ const Home = () => {
             Prepared fresh every day using traditional ingredients and authentic village cooking methods.
           </p>
 
-          <button className="mt-6 font-semibold text-[#6B0F0F]">
-            Order Now →
-          </button>
+          
         </div>
       ))}
     </div>
@@ -338,9 +363,9 @@ const Home = () => {
     </div>
 
     <div className="mt-12 text-center">
-      <button className="rounded-full bg-[#6B0F0F] px-8 py-4 font-semibold text-white transition hover:bg-[#3A1E12]">
+      <Link to="/gallery" className="rounded-full bg-[#6B0F0F] px-8 py-4 font-semibold text-white transition hover:bg-[#3A1E12]">
         View Full Gallery
-      </button>
+      </Link>
     </div>
 
   </div>
@@ -363,13 +388,27 @@ const Home = () => {
     </p>
 
     <div className="mt-6 flex flex-wrap justify-center gap-4">
-      <button className="rounded-full bg-[#D4A017] px-7 py-3 font-semibold text-[#3A1E12] transition hover:scale-105">
-        Book Table
-      </button>
+      <a
+        href="https://www.swiggy.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-full bg-[#FC8019] px-7 py-3 font-semibold text-white transition hover:scale-105"
+      >
+        Order on Swiggy
+      </a>
 
-      <button className="rounded-full border border-white/30 px-7 py-3 font-semibold text-white transition hover:bg-white hover:text-[#3A1E12]">
+      <a
+        href="https://www.zomato.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-full bg-[#E23744] px-7 py-3 font-semibold text-white transition hover:scale-105"
+      >
+        Order on Zomato
+      </a>
+
+      <Link to="/contact" className="rounded-full border border-white/30 px-7 py-3 font-semibold text-white transition hover:bg-white hover:text-[#3A1E12]">
         Contact Us
-      </button>
+      </Link>
     </div>
   </div>
 </section>

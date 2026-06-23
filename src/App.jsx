@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 import Home from "./pages/Home";
@@ -9,6 +10,12 @@ import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
   return (
     <div className="min-h-screen bg-[#F8F1E7]">
       <Navbar />
