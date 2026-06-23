@@ -309,62 +309,7 @@ const Home = () => {
           
         </div>
       ))}
-    </div>
-  </div>
-</section>
-
-<section className="bg-[#F8F1E7] py-24">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <div className="text-center">
-      <p className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
-        Our Atmosphere
-      </p>
-
-      <h2 className="font-serif text-4xl font-bold text-[#6B0F0F] md:text-5xl">
-        Moments From Our Village Hotel
-      </h2>
-    </div>
-
-    <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-
-      <div className="overflow-hidden rounded-[2rem]">
-        <img
-          src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80"
-          alt=""
-          className="h-[420px] w-full object-cover transition duration-500 hover:scale-110"
-        />
       </div>
-
-      <div className="overflow-hidden rounded-[2rem]">
-        <img
-          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
-          alt=""
-          className="h-[420px] w-full object-cover transition duration-500 hover:scale-110"
-        />
-      </div>
-
-      <div className="overflow-hidden rounded-[2rem]">
-        <img
-          src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
-          alt=""
-          className="h-[420px] w-full object-cover transition duration-500 hover:scale-110"
-        />
-      </div>
-
-      <div className="overflow-hidden rounded-[2rem]">
-        <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80"
-          alt=""
-          className="h-[420px] w-full object-cover transition duration-500 hover:scale-110"
-        />
-      </div>
-
-    </div>
-
-    <div className="mt-12 text-center">
-      <Link to="/gallery" className="rounded-full bg-[#6B0F0F] px-8 py-4 font-semibold text-white transition hover:bg-[#3A1E12]">
-        View Full Gallery
       </Link>
     </div>
 
