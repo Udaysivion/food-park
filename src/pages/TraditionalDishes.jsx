@@ -1,4 +1,10 @@
 import Footer from "../components/Footer";
+import chickenFriedRiceImg from "../assets/chicken fried rice 1.jpg";
+import chickenBonelessImg from "../assets/boneless 1.jpg";
+import chickenMixedBiryaniImg from "../assets/chicken mixed biryani.png";
+import thumsupChickenImg from "../assets/thumsup chicken.png";
+import mixedVegBiryaniImg from "../assets/mixed veg biryani.png";
+import hongkongChickenImg from "../assets/hongkong chicken.jpg";
 
 const TraditionalDishes = () => {
   return (
@@ -37,16 +43,34 @@ const TraditionalDishes = () => {
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {[
         {
-          name: "Andhra Meals",
-          img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80",
+          name: "Special Chicken Fried Rice",
+          img: chickenFriedRiceImg,
+          desc: "Fragrant stir-fried rice tossed with tender chicken, fresh vegetables, egg, and signature restaurant spices.",
         },
         {
-          name: "Natu Kodi Pulusu",
-          img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+          name: "Chicken Boneless",
+          img: chickenBonelessImg,
+          desc: "Juicy boneless chicken pieces marinated in local spices and deep-fried to a golden crunch.",
         },
         {
-          name: "Ragi Sangati",
-          img: "https://images.unsplash.com/photo-1626509653291-18d9a934b9db?auto=format&fit=crop&w=900&q=80",
+          name: "Chicken Mixed Biryani",
+          img: chickenMixedBiryaniImg,
+          desc: "Fragrant basmati rice layered with juicy spiced chicken, hard-boiled egg, and aromatic herbs.",
+        },
+        {
+          name: "Thumsup Chicken",
+          img: thumsupChickenImg,
+          desc: "Juicy chicken wings glazed in a rich, sweet and spicy Thums Up reduction sauce with curry leaves.",
+        },
+        {
+          name: "Mixed Veg Biryani",
+          img: mixedVegBiryaniImg,
+          desc: "Aromatic basmati rice cooked dum-style with seasonal vegetables, paneer cubes, and fresh mint.",
+        },
+        {
+          name: "Hongkong Chicken",
+          img: hongkongChickenImg,
+          desc: "Stir-fried glazed chicken tossed with colorful bell peppers, cashews, and a savory-sweet sauce.",
         },
       ].map((dish, index) => (
         <div
@@ -65,7 +89,7 @@ const TraditionalDishes = () => {
             </h3>
 
             <p className="mt-3 text-sm leading-7 text-gray-600">
-              Prepared with traditional Andhra spices and village-style cooking.
+              {dish.desc || "Prepared with traditional Andhra spices and village-style cooking."}
             </p>
           </div>
         </div>
