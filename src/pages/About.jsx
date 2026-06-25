@@ -63,25 +63,25 @@ const AboutHero = () => {
             <div className="grid grid-cols-2 gap-6">
               <div className="rounded-[2rem] bg-white p-8 shadow-lg">
                 <h3 className="font-serif text-4xl font-bold text-[#6B0F0F]">
-                  25+
+                  18+
                 </h3>
                 <p className="mt-2 text-gray-600">
-                  Years Of Heritage
+                  Years Since 2007
                 </p>
               </div>
 
               <div className="rounded-[2rem] bg-white p-8 shadow-lg">
                 <h3 className="font-serif text-4xl font-bold text-[#6B0F0F]">
-                  100+
+                  150+
                 </h3>
                 <p className="mt-2 text-gray-600">
-                  Traditional Recipes
+                  Authentic Dishes
                 </p>
               </div>
 
               <div className="rounded-[2rem] bg-white p-8 shadow-lg">
                 <h3 className="font-serif text-4xl font-bold text-[#6B0F0F]">
-                  5000+
+                  5 Lakh+
                 </h3>
                 <p className="mt-2 text-gray-600">
                   Happy Guests
@@ -90,10 +90,10 @@ const AboutHero = () => {
 
               <div className="rounded-[2rem] bg-[#6B0F0F] p-8 shadow-lg">
                 <h3 className="font-serif text-4xl font-bold text-[#D4A017]">
-                  100%
+                  1.7 Lakh+
                 </h3>
                 <p className="mt-2 text-white">
-                  Fresh Ingredients
+                  Online Ratings
                 </p>
               </div>
             </div>

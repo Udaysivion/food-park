@@ -399,23 +399,23 @@ const TraditionalDishes = () => {
         <div className="mt-8 flex flex-wrap gap-4">
           <div className="rounded-2xl bg-white/10 px-6 py-4">
             <h3 className="font-serif text-3xl font-bold text-[#D4A017]">
-              100+
+              150+
             </h3>
             <p className="text-sm text-gray-300">Recipes</p>
           </div>
 
           <div className="rounded-2xl bg-white/10 px-6 py-4">
             <h3 className="font-serif text-3xl font-bold text-[#D4A017]">
-              25+
+              18+
             </h3>
-            <p className="text-sm text-gray-300">Years</p>
+            <p className="text-sm text-gray-300">Years (Since 2007)</p>
           </div>
 
           <div className="rounded-2xl bg-white/10 px-6 py-4">
             <h3 className="font-serif text-3xl font-bold text-[#D4A017]">
-              5k+
+              5 Lakh+
             </h3>
-            <p className="text-sm text-gray-300">Guests</p>
+            <p className="text-sm text-gray-300">Happy Guests</p>
           </div>
         </div>
       </div>
