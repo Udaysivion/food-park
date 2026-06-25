@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import swiggyAwardImg from "../assets/swiggy-real-award.png";
+import zomatoAwardImg from "../assets/zomato-real-award.jpg";
+import govtAwardImg from "../assets/govt-award.png";
 import thumsupChickenImg from "../assets/thumsup chicken.png";
 import chickenMixedBiryaniImg from "../assets/chicken mixed biryani.png";
 import chickenBonelessImg from "../assets/boneless 1.jpg";
@@ -18,8 +22,8 @@ const Home = () => {
           <div className="absolute inset-0 bg-black/55"></div>
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-28">
-          <div className="max-w-3xl">
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-16">
+          <div className="max-w-3xl -mt-4">
             <div className="mb-6 inline-flex rounded-full border border-[#D4A017]/50 bg-white/10 px-5 py-2 backdrop-blur-md">
               <span className="text-sm font-medium tracking-wider text-[#F8F1E7]">
                 AUTHENTIC VILLAGE DINING EXPERIENCE
@@ -32,55 +36,87 @@ const Home = () => {
                 Tradition Of Andhra
               </span>
             </h1>
+            <div className="mt-10">
+              {/* Ratings Box */}
+              <div className="inline-flex flex-wrap items-center gap-6 rounded-[1.25rem] border border-[#D4A017]/30 bg-[#111111]/85 p-5 px-7 shadow-2xl backdrop-blur-md">
+                
+                {/* Google */}
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                    <span className="font-semibold text-white">Google</span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="text-2xl font-bold text-white">4.3</span>
+                    <span className="text-[#D4A017] text-[15px] tracking-[2px]">★★★★☆</span>
+                  </div>
+                  <p className="mt-0.5 text-[13px] text-gray-400">2,450+ reviews</p>
+                </div>
 
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-gray-200">
-              Experience handcrafted village recipes, fresh local ingredients,
-              traditional cooking methods, and warm hospitality in a luxurious
-              rural-inspired atmosphere.
-            </p>
+                <div className="h-16 w-px bg-white/10 mx-2 hidden sm:block"></div>
 
-            <div className="mt-6 flex w-fit flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border border-white/20 bg-black/25 px-5 py-3 text-white shadow-lg backdrop-blur-md">
-              <div
-                className="flex gap-1 text-xl text-[#F5B301]"
-                aria-label="4.4 out of 5 stars"
-              >
-                <span aria-hidden="true">★</span>
-                <span aria-hidden="true">★</span>
-                <span aria-hidden="true">★</span>
-                <span aria-hidden="true">★</span>
-                <span className="opacity-40" aria-hidden="true">★</span>
+                {/* Swiggy */}
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#FC8019] text-[11px] font-bold text-white shadow-sm">S</div>
+                    <span className="font-semibold text-white">Swiggy</span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="text-2xl font-bold text-white">4.2</span>
+                    <span className="text-[#D4A017] text-[15px] tracking-[2px]">★★★★☆</span>
+                  </div>
+                  <p className="mt-0.5 text-[13px] text-gray-400">73K+ ratings</p>
+                </div>
+
+                <div className="h-16 w-px bg-white/10 mx-2 hidden sm:block"></div>
+
+                {/* Zomato */}
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#E23744] text-[10px] font-bold italic text-white shadow-sm">Z</div>
+                    <span className="font-semibold text-white">Zomato</span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="text-2xl font-bold text-white">3.7</span>
+                    <span className="text-[#D4A017] text-[15px] tracking-[2px]">★★★★☆</span>
+                  </div>
+                  <p className="mt-0.5 text-[13px] text-gray-400">97.7K+ ratings</p>
+                </div>
+
               </div>
-              <div className="h-8 w-px bg-white/25" aria-hidden="true" />
-              <div>
-                <p className="font-bold">4.4/5 Customer Rating</p>
-                <p className="text-xs text-gray-300">
-                  Loved by our Kakinada guests
-                </p>
+
+              {/* Action Buttons */}
+              <div className="mt-6 flex flex-wrap gap-4">
+                <a
+                  href="https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#FC8019] px-8 py-3.5 font-semibold text-white shadow-[0_8px_20px_rgba(252,128,25,0.3)] transition hover:scale-105 hover:bg-[#e66f0d]"
+                >
+                  Order on Swiggy
+                </a>
+
+                <a
+                  href="https://www.zomato.com/kakinada/food-park-family-restaurant-1-kakinada-locality/order"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#E23744] px-8 py-3.5 font-semibold text-white shadow-[0_8px_20px_rgba(226,55,68,0.3)] transition hover:scale-105 hover:bg-[#c92f3b]"
+                >
+                  Order on Zomato
+                </a>
+
+                <Link 
+                  to="/menu" 
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#111111]/70 px-8 py-3.5 font-semibold text-white backdrop-blur-md transition hover:bg-white/10"
+                >
+                  Explore Menu
+                </Link>
               </div>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-[#FC8019] px-8 py-4 font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-[#e66f0d]"
-              >
-                Order on Swiggy
-              </a>
-
-              <a
-                href="https://www.zomato.com/kakinada/food-park-family-restaurant-1-kakinada-locality/order"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-[#E23744] px-8 py-4 font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-[#c92f3b]"
-              >
-                Order on Zomato
-              </a>
-
-              <Link to="/menu" className="rounded-full border border-[#D4A017] px-8 py-4 font-semibold text-white backdrop-blur-md transition hover:bg-[#D4A017] hover:text-black">
-                Explore Menu
-              </Link>
             </div>
           </div>
         </div>
@@ -234,7 +270,7 @@ const Home = () => {
       />
 
       <div className="absolute -bottom-8 right-8 rounded-3xl bg-[#6B0F0F] p-6 text-white shadow-xl">
-        <h3 className="font-serif text-4xl font-bold">25+</h3>
+        <h3 className="font-serif text-4xl font-bold">18+</h3>
         <p className="text-sm font-medium">Years of Taste</p>
       </div>
     </div>
@@ -277,57 +313,104 @@ const Home = () => {
   </div>
 </section>
 
-<section className="bg-[#3A1E12] py-24 text-white">
-  <div className="mx-auto max-w-7xl px-6">
+<section className="bg-gradient-to-b from-[#200D06] to-[#3A1E12] py-28 text-white relative overflow-hidden">
+  <div className="absolute top-0 left-1/2 w-full -translate-x-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#D4A017]/30 to-transparent"></div>
+  
+  <div className="mx-auto max-w-7xl px-6 relative z-10">
     <div className="text-center mb-16">
-      <p className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
-        Recognition
-      </p>
+      <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#D4A017]/30 bg-[#D4A017]/10 px-4 py-1.5 backdrop-blur-sm">
+        <span className="text-xl">🏆</span>
+        <span className="text-xs font-bold uppercase tracking-[3px] text-[#D4A017]">
+          Recognized Excellence
+        </span>
+      </div>
       <h2 className="font-serif text-4xl font-bold text-white md:text-5xl">
-        Awards & Accolades
+        Featured Awards & Certifications
       </h2>
-      <p className="mx-auto mt-4 max-w-2xl text-gray-300">
-        Our commitment to preserving traditional tastes and rural cooking techniques has been recognized by industry leaders and food boards.
+      <p className="mx-auto mt-5 max-w-2xl text-gray-300 text-lg">
+        Our uncompromising commitment to preserving authentic Andhra village recipes has earned us the highest honors from top food platforms and the government.
       </p>
     </div>
 
     <div className="grid gap-8 md:grid-cols-3">
       {[
         {
-          title: "Best Traditional Restaurant",
-          org: "National Food Awards 2025",
-          desc: "Honored for authentic firewood cooking and preservation of age-old regional Andhra recipes.",
-          icon: "🏆",
+          title: "Restaurant of the Year",
+          org: "Swiggy Awards 2025",
+          desc: "Recognized as the top-rated traditional restaurant in Kakinada for exceptional food quality and delivery standards.",
+          img: swiggyAwardImg,
+          themeColor: "#FC8019",
+          badgeText: "Swiggy Certified",
+          isCertificate: true,
         },
         {
-          title: "Culinary Heritage Award",
-          org: "State Tourism Board 2024",
-          desc: "Awarded for exceptional representation of Coastal, Rayalaseema, and Telangana culinary histories.",
-          icon: "🏅",
+          title: "Best Family Restaurant",
+          org: "Zomato Restaurant Awards 2024",
+          desc: "Awarded Best Family Restaurant in Kakinada by Zomato. Signed by Deepinder Goyal, Founder of Zomato.",
+          img: zomatoAwardImg,
+          themeColor: "#E23744",
+          badgeText: "Zomato Choice",
+          isCertificate: true,
         },
         {
-          title: "Outstanding Hygiene Standards",
-          org: "Food Safety & Quality Council 2025",
-          desc: "Recognized for maintaining pristine safety and hygiene standards in a rustic village setting.",
-          icon: "⭐",
+          title: "Heritage Cuisine",
+          org: "Govt. Tourism Board 2025",
+          desc: "Officially certified by the government for preserving age-old regional Andhra recipes and culinary traditions.",
+          img: govtAwardImg,
+          themeColor: "#34A853",
+          badgeText: "Govt. Certified",
         },
       ].map((award, index) => (
         <div
           key={index}
-          className="group rounded-3xl border border-[#D4A017]/20 bg-white/5 p-8 transition duration-300 hover:bg-white/10 hover:border-[#D4A017]/50"
+          className="group relative h-[420px] w-full overflow-hidden rounded-[2.5rem] shadow-2xl transition duration-500 hover:-translate-y-3"
+          style={{ boxShadow: `0 10px 30px -10px ${award.themeColor}50` }}
         >
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#D4A017]/10 text-4xl group-hover:scale-110 transition duration-300">
-            {award.icon}
-          </div>
-          <h3 className="mt-6 text-xl font-bold text-[#D4A017] group-hover:text-white transition duration-300">
-            {award.title}
-          </h3>
-          <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-gray-400">
-            {award.org}
-          </p>
-          <p className="mt-4 text-sm leading-6 text-gray-300">
-            {award.desc}
-          </p>
+          {award.isCertificate ? (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#fdf6ec] to-[#f5e9d5]"></div>
+              <div className="absolute inset-3 rounded-[2rem] border-2 pointer-events-none" style={{ borderColor: `${award.themeColor}40` }}></div>
+              <img
+                src={award.img}
+                alt={award.title}
+                className="absolute inset-0 h-full w-full object-contain p-4 transition duration-700 group-hover:scale-105 drop-shadow-2xl"
+              />
+              <div className="absolute top-5 left-5">
+                <div
+                  className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 shadow-lg"
+                  style={{ backgroundColor: award.themeColor }}
+                >
+                  <span className="h-2 w-2 rounded-full bg-white"></span>
+                  <span className="text-[10px] font-bold tracking-widest text-white uppercase">{award.badgeText}</span>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 px-6 py-4" style={{ background: `linear-gradient(to top, ${award.themeColor}ee, ${award.themeColor}88, transparent)` }}>
+                <p className="text-[10px] font-bold uppercase tracking-[3px] text-white/80">{award.org}</p>
+                <h3 className="font-serif text-xl font-bold text-white leading-tight">{award.title}</h3>
+              </div>
+            </>
+          ) : (
+            <>
+              <img
+                src={award.img}
+                alt={award.title}
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/10 opacity-90 transition duration-500 group-hover:opacity-100"></div>
+              <div className="absolute inset-0 flex flex-col justify-end p-8 transition-transform duration-500 group-hover:-translate-y-2">
+                <div
+                  className="mb-auto inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 backdrop-blur-md shadow-lg"
+                  style={{ backgroundColor: `${award.themeColor}30`, border: `1px solid ${award.themeColor}60` }}
+                >
+                  <span className="h-2 w-2 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: award.themeColor, color: award.themeColor }}></span>
+                  <span className="text-[10px] font-bold tracking-widest text-white uppercase">{award.badgeText}</span>
+                </div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[3px]" style={{ color: award.themeColor }}>{award.org}</p>
+                <h3 className="font-serif text-3xl font-bold text-white mb-3 leading-tight" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}>{award.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-300">{award.desc}</p>
+              </div>
+            </>
+          )}
         </div>
       ))}
     </div>
@@ -354,68 +437,104 @@ const Home = () => {
     <div className="grid gap-6 md:grid-cols-2 mb-16">
 
       {/* Swiggy Rating Card */}
-      <div className="flex items-center gap-6 rounded-3xl bg-gradient-to-r from-[#ff9a2e] to-[#ff6b00] p-8 text-white shadow-xl">
-        <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-5xl font-black text-white">
-          🛵
-        </div>
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-orange-100">Swiggy</p>
-          <div className="mt-1 flex items-baseline gap-2">
-            <span className="font-serif text-5xl font-bold">4.2</span>
-            <span className="text-orange-100">/ 5</span>
+      <div className="group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#FC8019] to-[#D66811] p-6 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(252,128,25,0.4)]">
+        {/* Decorative Background Elements */}
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl transition-transform duration-500 group-hover:scale-150"></div>
+        <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-black/10 blur-xl"></div>
+        
+        <div className="relative z-10 flex flex-col justify-between sm:flex-row sm:items-center">
+          <div className="flex items-center gap-5">
+            {/* Icon Block */}
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/20 shadow-inner backdrop-blur-md border border-white/20 transition-transform duration-300 group-hover:scale-105">
+              <span className="text-3xl drop-shadow-md">🛵</span>
+            </div>
+            
+            {/* Stats Block */}
+            <div>
+              <h4 className="text-xs font-bold tracking-[2px] text-orange-100 uppercase">Swiggy</h4>
+              <div className="mt-0.5 flex items-baseline gap-2">
+                <span className="font-serif text-4xl font-extrabold text-white drop-shadow-sm">4.2</span>
+                <span className="text-orange-200 text-xs font-bold tracking-wider">/ 5</span>
+              </div>
+              <div className="mt-1.5 flex items-center gap-2">
+                <div className="flex gap-0.5 text-yellow-300 text-[11px] drop-shadow-sm">★★★★☆</div>
+                <div className="rounded-md bg-white/20 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm backdrop-blur-md border border-white/10">73K+ Ratings</div>
+              </div>
+            </div>
           </div>
-          <div className="mt-1 flex gap-1 text-yellow-300 text-xl">★★★★☆</div>
-          <p className="mt-1 text-sm text-orange-100">73K+ Ratings</p>
-        </div>
-        <div className="ml-auto hidden lg:block">
-          <a
-            href="https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full border-2 border-white/50 px-5 py-2 text-sm font-semibold text-white transition hover:bg-white hover:text-[#ff6b00]"
-          >
-            View on Swiggy →
-          </a>
+          
+          <div className="mt-5 sm:mt-0 sm:block hidden">
+            <a
+              href="https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-xs font-bold text-white backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-[#FC8019] hover:shadow-lg"
+            >
+              View on Swiggy <span>↗</span>
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Zomato Rating Card */}
-      <div className="rounded-3xl bg-gradient-to-r from-[#f03b4b] to-[#b91c1c] p-8 text-white shadow-xl">
-        <div className="flex items-center gap-6">
-          <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-5xl font-black text-white">
-            🍽️
-          </div>
-          <div className="flex-1">
-            <p className="text-sm font-semibold uppercase tracking-wider text-red-100">Zomato</p>
-            <div className="mt-2 grid grid-cols-2 gap-4">
-              <div className="rounded-xl bg-white/10 p-3">
-                <p className="text-xs font-semibold text-red-200 uppercase tracking-wider">Dining</p>
-                <div className="flex items-baseline gap-1 mt-1">
-                  <span className="font-serif text-3xl font-bold">4.4</span>
-                  <span className="text-red-100 text-sm">/ 5</span>
+      <div className="group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#E23744] to-[#B91C1C] p-6 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(226,55,68,0.4)]">
+        {/* Decorative Background Elements */}
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl transition-transform duration-500 group-hover:scale-150"></div>
+        <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-black/10 blur-xl"></div>
+        
+        <div className="relative z-10 flex flex-col justify-between sm:flex-row sm:items-center">
+          <div className="flex items-center gap-5">
+            {/* Icon Block */}
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/20 shadow-inner backdrop-blur-md border border-white/20 transition-transform duration-300 group-hover:scale-105">
+              <span className="text-3xl drop-shadow-md">🍽️</span>
+            </div>
+            
+            {/* Stats Block */}
+            <div>
+              <h4 className="text-xs font-bold tracking-[2px] text-red-100 uppercase">Zomato</h4>
+              <div className="mt-1 flex gap-4">
+                
+                {/* Dining */}
+                <div className="flex flex-col justify-center">
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-red-200">Dining</p>
+                  <div className="flex items-baseline gap-1 mt-0.5">
+                    <span className="font-serif text-2xl font-bold text-white drop-shadow-sm">4.4</span>
+                    <span className="text-red-200 text-[10px] font-bold">/5</span>
+                  </div>
+                  <div className="mt-1 flex items-center gap-1.5">
+                    <div className="flex gap-0.5 text-yellow-300 text-[9px] drop-shadow-sm">★★★★☆</div>
+                    <span className="rounded bg-white/20 px-1.5 py-0.5 text-[9px] font-bold text-white shadow-sm border border-white/10">171</span>
+                  </div>
                 </div>
-                <div className="flex gap-0.5 text-yellow-300 text-sm mt-0.5">★★★★☆</div>
-                <p className="text-xs text-red-200 mt-0.5">171 Ratings</p>
-              </div>
-              <div className="rounded-xl bg-white/10 p-3">
-                <p className="text-xs font-semibold text-red-200 uppercase tracking-wider">Delivery</p>
-                <div className="flex items-baseline gap-1 mt-1">
-                  <span className="font-serif text-3xl font-bold">3.7</span>
-                  <span className="text-red-100 text-sm">/ 5</span>
+                
+                {/* Divider */}
+                <div className="w-px bg-white/20 my-1"></div>
+                
+                {/* Delivery */}
+                <div className="flex flex-col justify-center">
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-red-200">Delivery</p>
+                  <div className="flex items-baseline gap-1 mt-0.5">
+                    <span className="font-serif text-2xl font-bold text-white drop-shadow-sm">3.7</span>
+                    <span className="text-red-200 text-[10px] font-bold">/5</span>
+                  </div>
+                  <div className="mt-1 flex items-center gap-1.5">
+                    <div className="flex gap-0.5 text-yellow-300 text-[9px] drop-shadow-sm">★★★★☆</div>
+                    <span className="rounded bg-white/20 px-1.5 py-0.5 text-[9px] font-bold text-white shadow-sm border border-white/10">97.7K</span>
+                  </div>
                 </div>
-                <div className="flex gap-0.5 text-yellow-300 text-sm mt-0.5">★★★★☆</div>
-                <p className="text-xs text-red-200 mt-0.5">97.7K Ratings</p>
+
               </div>
             </div>
           </div>
-          <div className="ml-auto hidden lg:block">
+
+          <div className="mt-5 sm:mt-0 sm:block hidden">
             <a
               href="https://www.zomato.com/kakinada/food-park-family-restaurant-1-kakinada-locality/order"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border-2 border-white/50 px-5 py-2 text-sm font-semibold text-white transition hover:bg-white hover:text-[#b91c1c]"
+              className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-xs font-bold text-white backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-[#E23744] hover:shadow-lg"
             >
-              View on Zomato →
+              View on Zomato <span>↗</span>
             </a>
           </div>
         </div>
@@ -428,7 +547,7 @@ const Home = () => {
         {
           name: "Ravi Kumar",
           platform: "Swiggy",
-          platformColor: "bg-[#FC8019]",
+          platformColor: "bg-[#FC8019] text-white",
           rating: 5,
           dish: "Thumsup Chicken",
           review: "Absolutely mind-blowing! The Thumsup Chicken is unlike anything I've ever had — the glaze is perfectly balanced between sweet and spicy. Will definitely order again!",
@@ -437,7 +556,7 @@ const Home = () => {
         {
           name: "Priya Lakshmi",
           platform: "Zomato",
-          platformColor: "bg-[#E23744]",
+          platformColor: "bg-[#E23744] text-white",
           rating: 4,
           dish: "Chicken Mixed Biryani",
           review: "One of the best biryanis in Kakinada. The rice was perfectly cooked with a beautiful aroma. Delivery was also super fast. Highly recommended for biryani lovers!",
@@ -446,7 +565,7 @@ const Home = () => {
         {
           name: "Suresh Reddy",
           platform: "Swiggy",
-          platformColor: "bg-[#FC8019]",
+          platformColor: "bg-[#FC8019] text-white",
           rating: 5,
           dish: "Chicken Boneless",
           review: "The boneless chicken was absolutely crispy outside and juicy inside. The marinade has that authentic village-style spice that you can't find anywhere else!",
@@ -455,25 +574,59 @@ const Home = () => {
         {
           name: "Anitha Devi",
           platform: "Zomato",
-          platformColor: "bg-[#E23744]",
+          platformColor: "bg-[#E23744] text-white",
           rating: 4,
           dish: "Hongkong Chicken",
           review: "Great flavour, arrived hot and fresh. The Hongkong Chicken was tender with that glossy sauce that pairs wonderfully with fried rice. Good value for money!",
           date: "April 2025",
         },
         {
+          name: "Ramesh Babu",
+          platform: "Google",
+          platformColor: "bg-white border border-gray-200 text-gray-700 shadow-sm",
+          logo: (
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 mr-1.5 inline-block">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          ),
+          rating: 5,
+          dish: "Food Park Spl Biryani",
+          review: "Excellent ambiance and authentic taste! The Food Park Spl Biryani was loaded with flavors. It feels great to have a true Andhra village dining experience right here in Kakinada.",
+          date: "July 2025",
+        },
+        {
           name: "Mohammed Irfan",
           platform: "Swiggy",
-          platformColor: "bg-[#FC8019]",
+          platformColor: "bg-[#FC8019] text-white",
           rating: 5,
           dish: "Special Chicken Fried Rice",
           review: "The fried rice is packed with flavour and generous with the chicken. Every bite was delicious. Food Park is easily my go-to place for quick cravings!",
           date: "May 2025",
         },
         {
+          name: "Sowmya Reddy",
+          platform: "Google",
+          platformColor: "bg-white border border-gray-200 text-gray-700 shadow-sm",
+          logo: (
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 mr-1.5 inline-block">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          ),
+          rating: 4,
+          dish: "Mutton Biryani",
+          review: "The mutton pieces were incredibly tender and the masala was perfect. It gets crowded on weekends, but the food is absolutely worth the wait.",
+          date: "August 2025",
+        },
+        {
           name: "Kavitha Rao",
           platform: "Zomato",
-          platformColor: "bg-[#E23744]",
+          platformColor: "bg-[#E23744] text-white",
           rating: 5,
           dish: "Mixed Veg Biryani",
           review: "I'm vegetarian and was so happy to find a biryani this flavourful! The paneer was soft, vegetables fresh, and the saffron rice was fragrant. Loved every bite!",
@@ -495,7 +648,8 @@ const Home = () => {
                 <p className="text-xs text-gray-400">{review.date}</p>
               </div>
             </div>
-            <span className={`rounded-full px-3 py-1 text-xs font-bold text-white ${review.platformColor}`}>
+            <span className={`rounded-full px-3 py-1 flex items-center text-[11px] font-bold ${review.platformColor}`}>
+              {review.logo}
               {review.platform}
             </span>
           </div>

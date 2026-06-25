@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logoImg from "../assets/foodpark-logo.png";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,17 +19,25 @@ const Navbar = () => {
     <header className="fixed left-0 top-0 z-50 w-full px-2 py-4 sm:px-4">
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between rounded-full border border-[#D4A017]/30 bg-[#F8F1E7]/85 px-4 py-3 shadow-xl backdrop-blur-md sm:px-6">
         {/* Logo */}
-        <Link to="/" onClick={() => setIsOpen(false)} className="shrink-0">
-          <h1 className="font-serif text-xl font-bold tracking-wide text-[#6B0F0F] sm:text-2xl">
-            Food Park
-          </h1>
-          <p className="-mt-1 text-[11px] font-medium tracking-[0.25em] text-[#3A1E12]/70">
-            VILLAGE HOTEL
-          </p>
+        <Link to="/" onClick={() => setIsOpen(false)} className="shrink-0 flex items-center gap-3">
+          <img
+            src={logoImg}
+            alt="Food Park Logo"
+            className="h-12 w-12 rounded-full object-cover shadow-md ring-2 ring-[#D4A017]/60"
+          />
+          <div>
+            <h1 className="font-serif text-xl font-bold tracking-wide text-[#6B0F0F] sm:text-2xl leading-none">
+              Food Park
+            </h1>
+            <p className="mt-0.5 text-[10px] font-semibold tracking-[0.3em] text-[#3A1E12]/60 uppercase">
+              Family Restaurant
+            </p>
+          </div>
         </Link>
 
+
         {/* Links */}
-        <ul className="absolute left-1/2 hidden w-[68%] max-w-4xl -translate-x-1/2 items-center justify-between lg:flex">
+        <ul className="hidden items-center justify-end gap-6 lg:flex lg:flex-1 xl:gap-8">
           {navItems.map((item) => (
             <li
               key={item.label}

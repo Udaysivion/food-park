@@ -37,7 +37,7 @@ const MenuDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { category, index } = useParams();
-  const decodedCategory = decodeURIComponent(category || "Breakfast");
+  const decodedCategory = decodeURIComponent(category || "Biryani");
   const categoryItems = menuItems[decodedCategory] || [];
   const selectedItem =
     location.state?.item || categoryItems[Number(index)] || null;
@@ -121,12 +121,16 @@ const MenuDetail = () => {
             <h2 className="mt-3 font-serif text-4xl font-bold text-[#6B0F0F]">
               {selectedItem.name}
             </h2>
-            {selectedItem.altName && (
-              <p className="mt-2 text-gray-500">
-                Also known as {selectedItem.altName}
-              </p>
-            )}
-            <p className="mt-5 text-2xl font-bold">₹{selectedItem.price}</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <span className="rounded-full bg-[#6B0F0F] px-5 py-2 text-lg font-bold text-white">
+                Full ₹{selectedItem.full}
+              </span>
+              {selectedItem.half && (
+                <span className="rounded-full border-2 border-[#6B0F0F] px-5 py-2 text-lg font-bold text-[#6B0F0F]">
+                  Half ₹{selectedItem.half}
+                </span>
+              )}
+            </div>
             <p className="mt-4 max-w-xl leading-7 text-gray-600">
               {selectedItem.desc}
             </p>
@@ -166,7 +170,7 @@ const MenuDetail = () => {
                     <h3 className="text-xl font-bold text-[#6B0F0F]">
                       {item.name}
                     </h3>
-                    <span className="font-bold">₹{item.price}</span>
+                    <span className="font-bold">₹{item.full}</span>
                   </div>
                   <p className="mt-2 text-sm leading-6 text-gray-600">
                     {item.desc}
