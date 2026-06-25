@@ -1,53 +1,48 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { categories, menuItems } from "../data/menuItems";
 
 const Menu = () => {
-  const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState("Breakfast");
+  const [activeCategory, setActiveCategory] = useState("Biryani");
 
-  const MenuCard = ({ item, onVisit }) => {
+  const MenuCard = ({ item }) => {
     const [idx, setIdx] = useState(0);
-
-    const toggle = () => setIdx((i) => (i + 1) % item.images.length);
-    const displayName = idx === 0 ? item.name : item.altName || item.name;
+    const hasMultiple = item.images.length > 1;
 
     return (
       <div className="overflow-hidden rounded-[2rem] border border-[#D4A017]/20 bg-white shadow-xl transition hover:-translate-y-2 hover:shadow-2xl">
         <div className="relative">
           <img
             src={item.images[idx]}
-            alt={displayName}
-            className="h-72 w-full object-cover"
+            alt={item.name}
+            className="h-64 w-full object-cover"
           />
-
-          <button
-            onClick={toggle}
-            className="absolute bottom-3 right-3 rounded-full bg-black/40 p-3 text-white shadow-lg hover:bg-black/60"
-          >
-            ›
-          </button>
+          {hasMultiple && (
+            <button
+              onClick={() => setIdx((i) => (i + 1) % item.images.length)}
+              className="absolute bottom-3 right-3 rounded-full bg-black/40 p-3 text-white shadow-lg hover:bg-black/60"
+            >
+              ›
+            </button>
+          )}
         </div>
 
-        <div className="p-8">
-          <h3 className="mb-3 font-serif text-3xl font-bold text-[#6B0F0F]">
-            {displayName}
+        <div className="p-6">
+          <h3 className="mb-2 font-serif text-xl font-bold text-[#6B0F0F] leading-tight">
+            {item.name}
           </h3>
 
-          <p className="leading-7 text-gray-600">{item.desc}</p>
+          <p className="text-sm leading-6 text-gray-600 mb-4">{item.desc}</p>
 
-          <div className="mt-6 flex items-center justify-between">
-            <button
-              onClick={onVisit}
-              className="rounded-full bg-[#D4A017] px-6 py-3 font-semibold text-[#3A1E12] shadow-md hover:bg-[#c08e14]"
-            >
-              Visit
-            </button>
-
-            <span className="text-lg font-semibold text-gray-500">
-              Price: ₹{item.price}
+          <div className="flex gap-2 flex-wrap">
+            <span className="rounded-full bg-[#6B0F0F] px-4 py-1.5 text-sm font-semibold text-white">
+              Full
             </span>
+            {item.half && (
+              <span className="rounded-full border border-[#6B0F0F] px-4 py-1.5 text-sm font-semibold text-[#6B0F0F]">
+                Half
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -55,16 +50,6 @@ const Menu = () => {
   };
 
   const activeItems = menuItems[activeCategory] || [];
-
-  const handleVisit = (index) => {
-    navigate(`/menu/detail/${encodeURIComponent(activeCategory)}/${index}`, {
-      state: {
-        item: activeItems[index],
-        category: activeCategory,
-        index,
-      },
-    });
-  };
 
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
@@ -122,10 +107,7 @@ const Menu = () => {
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                   {activeItems.map((item, index) => (
                     <div key={`${item.name}-${index}`} className="mx-auto max-w-md">
-                      <MenuCard
-                        item={item}
-                        onVisit={() => handleVisit(index)}
-                      />
+                      <MenuCard item={item} />
                     </div>
                   ))}
                 </div>
