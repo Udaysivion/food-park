@@ -7,6 +7,7 @@ import govtAwardImg from "../assets/govt-award.png";
 import thumsupChickenImg from "../assets/thumsup chicken.png";
 import chickenMixedBiryaniImg from "../assets/chicken mixed biryani.png";
 import chickenBonelessImg from "../assets/boneless 1.jpg";
+import homeHeroImg from "../assets/hero.png";
 
 const Home = () => {
   return (
@@ -14,8 +15,8 @@ const Home = () => {
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
-            alt="Village hotel"
+            src={homeHeroImg}
+            alt="Food Park Hero"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-black/55"></div>
