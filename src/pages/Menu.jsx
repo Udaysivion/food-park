@@ -1,6 +1,12 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import { categories, menuItems } from "../data/menuItems";
+
+const vp = { once: true, amount: 0.15 };
+const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } };
+const cardV = { hidden: { opacity: 0, y: 36 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } };
+const stagger = (d=0.1) => ({ hidden:{}, visible:{ transition:{ staggerChildren: d } } });
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState("Biryani");
@@ -54,23 +60,28 @@ const Menu = () => {
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
       <section className="relative overflow-hidden bg-[#3A1E12] pt-32 pb-24">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[5px] text-[#D4A017]">
+        <motion.div
+          variants={stagger(0.1)}
+          initial="hidden"
+          animate="visible"
+          className="mx-auto max-w-7xl px-6 text-center"
+        >
+          <motion.p variants={fadeUp} className="mb-4 text-sm font-semibold uppercase tracking-[5px] text-[#D4A017]">
             Our Menu
-          </p>
+          </motion.p>
 
-          <h1 className="mx-auto max-w-5xl font-serif text-5xl font-bold leading-tight text-white md:text-7xl">
+          <motion.h1 variants={fadeUp} className="mx-auto max-w-5xl font-serif text-5xl font-bold leading-tight text-white md:text-7xl">
             Authentic Andhra Flavours
             <span className="block text-[#D4A017]">
               Crafted Fresh Every Day
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-300">
+          <motion.p variants={fadeUp} className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-300">
             Explore traditional meals, spicy curries, village specials, snacks,
             and refreshing beverages.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       <section className="bg-[#F8F1E7] py-20">
@@ -85,10 +96,19 @@ const Menu = () => {
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <motion.div
+            variants={stagger(0.06)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={vp}
+            className="flex flex-wrap items-center justify-center gap-4"
+          >
             {categories.map((category) => (
-              <button
+              <motion.button
                 key={category}
+                variants={cardV}
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveCategory(category)}
                 className={`rounded-full px-7 py-3 font-semibold shadow-md transition ${
                   activeCategory === category
@@ -97,28 +117,31 @@ const Menu = () => {
                 }`}
               >
                 {category}
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="mt-14">
+          <motion.div
+            variants={stagger(0.09)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={vp}
+            className="mt-14"
+          >
             {activeItems.length ? (
-              <>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                  {activeItems.map((item, index) => (
-                    <div key={`${item.name}-${index}`} className="mx-auto max-w-md">
-                      <MenuCard item={item} />
-                    </div>
-                  ))}
-                </div>
-
-              </>
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {activeItems.map((item, index) => (
+                  <motion.div key={`${item.name}-${index}`} variants={cardV} whileHover={{ y: -8 }} className="mx-auto max-w-md">
+                    <MenuCard item={item} />
+                  </motion.div>
+                ))}
+              </div>
             ) : (
               <p className="text-center text-gray-600">
                 No items available in this category.
               </p>
             )}
-          </div>
+          </motion.div>
         </div>
       </section>
 

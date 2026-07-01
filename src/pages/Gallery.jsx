@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { viewport, fadeUp, staggerContainer, popIn } from "../hooks/useScrollAnimation";
 import Footer from "../components/Footer";
 
 const Gallery = () => {
@@ -32,40 +34,58 @@ const Gallery = () => {
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
       <section className="relative bg-[#3A1E12] pt-32 pb-24">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[5px] text-[#D4A017]">
+        <motion.div
+          variants={staggerContainer(0.1)}
+          initial="hidden"
+          animate="visible"
+          className="mx-auto max-w-7xl px-6 text-center"
+        >
+          <motion.p variants={fadeUp} className="mb-4 text-sm font-semibold uppercase tracking-[5px] text-[#D4A017]">
             Gallery
-          </p>
+          </motion.p>
 
-          <h1 className="mx-auto max-w-5xl font-serif text-5xl font-bold leading-tight text-white md:text-7xl">
+          <motion.h1 variants={fadeUp} className="mx-auto max-w-5xl font-serif text-5xl font-bold leading-tight text-white md:text-7xl">
             Moments Of
             <span className="block text-[#D4A017]">
               Village Hospitality
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-300">
+          <motion.p variants={fadeUp} className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-300">
             Explore our food, ambience, cooking traditions, and family dining
             memories through our gallery.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       <section className="bg-[#F8F1E7] py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 text-center">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
+          <motion.div
+            variants={staggerContainer(0.1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            className="mb-12 text-center"
+          >
+            <motion.p variants={fadeUp} className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
               Explore Gallery
-            </p>
+            </motion.p>
 
-            <h2 className="font-serif text-4xl font-bold text-[#6B0F0F] md:text-5xl">
+            <motion.h2 variants={fadeUp} className="font-serif text-4xl font-bold text-[#6B0F0F] md:text-5xl">
               Our Village Hotel Moments
-            </h2>
-          </div>
+            </motion.h2>
+          </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <motion.div
+            variants={staggerContainer(0.08)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            className="flex flex-wrap justify-center gap-4"
+          >
             {categories.map((category) => (
-              <button
+              <motion.button
+                variants={popIn}
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`rounded-full px-7 py-3 font-semibold transition ${
@@ -75,24 +95,31 @@ const Gallery = () => {
                 }`}
               >
                 {category}
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {galleryImages[activeCategory].map((img, index) => (
-              <div
-                key={index}
-                className="group overflow-hidden rounded-[2rem] shadow-xl"
-              >
-                <img
-                  src={img}
-                  alt={activeCategory}
-                  className="h-80 w-full object-cover transition duration-500 group-hover:scale-110"
-                />
-              </div>
-            ))}
-          </div>
+          <motion.div layout className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {galleryImages[activeCategory].map((img, index) => (
+                <motion.div
+                  key={img}
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4 }}
+                  className="group overflow-hidden rounded-[2rem] shadow-xl"
+                >
+                  <img
+                    src={img}
+                    alt={activeCategory}
+                    className="h-80 w-full object-cover transition duration-500 group-hover:scale-110"
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 

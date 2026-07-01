@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -12,8 +13,10 @@ import MainLayout from "./layouts/MainLayout";
 
 const App = () => {
   return (
-    <Routes>
-      <Route element={<MainLayout />}>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/traditional-dishes" element={<TraditionalDishes />} />
@@ -23,7 +26,8 @@ const App = () => {
         <Route path="/dish/:id" element={<DishDetails />} />
         <Route path="/menu/detail/:category/:index" element={<MenuDetail />} />
       </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 };
 
