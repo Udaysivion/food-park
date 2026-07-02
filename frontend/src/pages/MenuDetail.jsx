@@ -121,16 +121,6 @@ const MenuDetail = () => {
             <h2 className="mt-3 font-serif text-4xl font-bold text-[#6B0F0F]">
               {selectedItem.name}
             </h2>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <span className="rounded-full bg-[#6B0F0F] px-5 py-2 text-lg font-bold text-white">
-                Full ₹{selectedItem.full}
-              </span>
-              {selectedItem.half && (
-                <span className="rounded-full border-2 border-[#6B0F0F] px-5 py-2 text-lg font-bold text-[#6B0F0F]">
-                  Half ₹{selectedItem.half}
-                </span>
-              )}
-            </div>
             <p className="mt-4 max-w-xl leading-7 text-gray-600">
               {selectedItem.desc}
             </p>

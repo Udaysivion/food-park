@@ -1,16 +1,36 @@
-# React + Vite
+﻿# Food Park — Project Structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Folder Layout
 
-Currently, two official plugins are available:
+```
+food-park/
+├── frontend/   React + Vite public website (port 5173)
+└── backend/    Node.js + Express API + Admin Panel (port 4000)
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Quick Start
 
-## React Compiler
+### 1. Start the Backend (API + Admin Panel)
+```bash
+cd backend
+npm install     # first time only
+npm start       # or: node server.js
+```
+- API:         http://localhost:4000/api/menu
+- Admin Panel: http://localhost:4000/admin
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Start the Frontend (Dev Server)
+```bash
+cd frontend
+npm install     # first time only
+npm run dev
+```
+- Website: http://localhost:5173
 
-## Expanding the ESLint configuration
+> Make sure the backend is running BEFORE opening the menu page.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Admin Panel Features
+- View all menu categories and items
+- Add / Edit / Delete menu items per category
+- Add / Delete categories
+- Changes instantly reflect on the public Menu page
