@@ -2,36 +2,53 @@ import { useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import { getRelatedItems, menuItems } from "../data/menuItems";
+import { useCart } from "../context/CartContext";
 
 const SWIGGY_URL =
   "https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033";
 const ZOMATO_URL =
   "https://www.zomato.com/kakinada/food-park-family-restaurant-1-kakinada-locality/order";
 
-const OrderButtons = ({ compact = false }) => (
-  <div className={`flex flex-wrap gap-3 ${compact ? "mt-3" : "mt-6"}`}>
-    <a
-      href={SWIGGY_URL}
-      target="_blank"
-      rel="noreferrer"
-      className={`rounded-lg bg-[#FC8019] font-bold text-white shadow transition hover:-translate-y-0.5 hover:bg-[#e66f0d] ${
-        compact ? "px-4 py-2 text-xs" : "px-6 py-3 text-sm"
-      }`}
-    >
-      Order on Swiggy
-    </a>
-    <a
-      href={ZOMATO_URL}
-      target="_blank"
-      rel="noreferrer"
-      className={`rounded-lg bg-[#E23744] font-bold text-white shadow transition hover:-translate-y-0.5 hover:bg-[#c92f3b] ${
-        compact ? "px-4 py-2 text-xs" : "px-6 py-3 text-sm"
-      }`}
-    >
-      Order on Zomato
-    </a>
-  </div>
-);
+const OrderButtons = ({ item, compact = false }) => {
+  const { openOrderModal } = useCart();
+
+  return (
+    <div className={`flex flex-wrap items-center gap-3 ${compact ? "mt-3" : "mt-6"}`}>
+      {item && (
+        <button
+          type="button"
+          onClick={() => openOrderModal(item)}
+          className={`rounded-lg bg-[#6B0F0F] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#8B1A1A] border border-[#D4A017]/40 ${
+            compact ? "px-4 py-2 text-xs" : "px-6 py-3 text-sm"
+          }`}
+        >
+          Order & Customize Direct
+        </button>
+      )}
+
+      <a
+        href={SWIGGY_URL}
+        target="_blank"
+        rel="noreferrer"
+        className={`rounded-lg bg-[#FC8019] font-bold text-white shadow transition hover:-translate-y-0.5 hover:bg-[#e66f0d] ${
+          compact ? "px-4 py-2 text-xs" : "px-6 py-3 text-sm"
+        }`}
+      >
+        Swiggy
+      </a>
+      <a
+        href={ZOMATO_URL}
+        target="_blank"
+        rel="noreferrer"
+        className={`rounded-lg bg-[#E23744] font-bold text-white shadow transition hover:-translate-y-0.5 hover:bg-[#c92f3b] ${
+          compact ? "px-4 py-2 text-xs" : "px-6 py-3 text-sm"
+        }`}
+      >
+        Zomato
+      </a>
+    </div>
+  );
+};
 
 const MenuDetail = () => {
   const navigate = useNavigate();
@@ -124,12 +141,10 @@ const MenuDetail = () => {
             <p className="mt-4 max-w-xl leading-7 text-gray-600">
               {selectedItem.desc}
             </p>
-            <OrderButtons />
-            <p className="mt-3 text-xs text-gray-400">
-              You’ll continue securely on your selected delivery platform.
-            </p>
+            <OrderButtons item={selectedItem} />
           </div>
         </article>
+
 
         <div className="mt-16">
           <div className="text-center">

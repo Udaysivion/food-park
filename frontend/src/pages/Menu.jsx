@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
+import { menuItems as fallbackMenuData } from "../data/menuItems";
+import { useCart } from "../context/CartContext";
 
 const API_URL = "/api/menu";
 
@@ -9,61 +11,48 @@ const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, tra
 const cardV = { hidden: { opacity: 0, y: 36 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } };
 const stagger = (d=0.1) => ({ hidden:{}, visible:{ transition:{ staggerChildren: d } } });
 
-// ─── Local Static Image Map for Instant Loading ──────────────────────────────
+// ─── Visual Dish Thumbnails for Category Filter Tabs ──────────────────────────
+const categoryThumbnails = {
+  "Biryani": "/assets/chicken mixed biryani.png",
+  "Fried Rice Non Veg": "/assets/chicken fried rice 1.jpg",
+  "Fried Rice Veg": "/assets/mixed veg biryani.png",
+  "Noodles": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80",
+  "Veg Curry": "https://images.unsplash.com/photo-1585518419759-e924b539c667?auto=format&fit=crop&w=400&q=80",
+  "Chicken Curry": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=400&q=80",
+  "Chicken Fry": "/assets/thumsup chicken.png",
+  "Mutton Fry": "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=400&q=80",
+  "Fish Curry / Fry": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80",
+  "Prawns Curry / Fry": "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=400&q=80",
+  "Egg Curry / Starters": "https://images.unsplash.com/photo-1517244683847-7456b63c5969?auto=format&fit=crop&w=400&q=80",
+  "Starters Veg": "https://images.unsplash.com/photo-1567337710282-00832b415979?auto=format&fit=crop&w=400&q=80",
+  "Breads / Rotis": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=400&q=80",
+  "Meals / Rice Combo": "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=400&q=80",
+};
+
+// Local Static Image Map for Instant Loading
 const localImageMap = {
-  // Biryani
   "Chicken Mixed Biryani": "/assets/chicken mixed biryani.png",
   "Vegetable Biryani": "/assets/mixed veg biryani.png",
-  
-  // Fried Rice
   "Chicken Fried Rice": "/assets/chicken fried rice 1.jpg",
   "Spl Chicken Fried Rice": "/assets/chicken fried rice 2.jpg",
-  "Spl Mutton Fried Rice": "/assets/fried rice 1.jpg",
-  "Spl Prawn Fried Rice": "/assets/fried rice 1.jpg",
-  "Mixed Fried Rice": "/assets/fried rice 1.jpg",
-  "Egg Fried Rice": "/assets/fried rice 1.jpg",
-  "Vegetable Fried Rice": "/assets/fried rice 1.jpg",
-  "Spl Veg Fried Rice with Tomato Cashew Curry": "/assets/fried rice 1.jpg",
-  "Spl Veg Fried Rice with Paneer Curry": "/assets/fried rice 1.jpg",
-  "Spl Veg Fried Rice with Babycorn / Mushroom": "/assets/fried rice 1.jpg",
-  "Mixed Veg Fried Rice": "/assets/fried rice 1.jpg",
-  "Spl Mixed Veg Fried Rice": "/assets/fried rice 1.jpg",
-  
-  // Chicken
   "Thumsup Chicken": "/assets/thumsup chicken.png",
   "Chicken Boneless": "/assets/boneless 1.jpg",
   "Hongkong Chicken": "/assets/hongkong chicken.jpg",
-  
-  // Breakfast / Curries / Starters fallbacks
-  "Plain Dosa": "/assets/dosa1.jpg",
-  "Masala Dosa": "/assets/dosa2.jpg",
-  "Ghee Dosa": "/assets/dosa1.jpg",
-  "Onion Dosa": "/assets/dosa2.jpg",
-  "Single Idli": "/assets/idli1.jpg",
-  "Plate Idli": "/assets/idli2.jpg",
-  "Single Puri": "/assets/puri1.jpg",
-  "Plate Puri": "/assets/puri2.jpg",
-  
-  // Drinks & Beverages
-  "Sweet Lassi": "/assets/lassi 1.jpg",
-  "Mango Lassi": "/assets/lassi 2.jpg",
-  "Buttermilk": "/assets/buttermilk1.jpg",
-  "Masala Buttermilk": "/assets/buttermilk2.jpg",
-  "Filter Coffee": "/assets/filter coffe 1.jpg",
-  "Masala Chai": "/assets/masala chai 1.jpg",
-  "Ginger Tea": "/assets/masala chai 2.jpg",
-  "Coconut Water": "/assets/coconut water 1.jpg",
-  "Fresh Coconut Water": "/assets/coconut water 2.jpg",
-  "Rose Milk": "/assets/rose water 1.jpg",
-  "Badam Milk": "/assets/rose water 2.jpg",
 };
 
 const getMenuItemImage = (item) => {
-  if (localImageMap[item.name]) {
-    return localImageMap[item.name];
-  }
-  // Return the item's original unique image URL from menu.json
+  if (localImageMap[item.name]) return localImageMap[item.name];
+  if (item.images && item.images.length > 0) return item.images[0];
   return item.image || "/assets/foodpark-logo.png";
+};
+
+const getCategoryThumbnail = (category, data) => {
+  if (categoryThumbnails[category]) return categoryThumbnails[category];
+  const items = data[category];
+  if (items && items.length > 0) {
+    return getMenuItemImage(items[0]);
+  }
+  return "/assets/foodpark-logo.png";
 };
 
 const Menu = () => {
@@ -71,7 +60,7 @@ const Menu = () => {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { openOrderModal } = useCart();
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -80,13 +69,20 @@ const Menu = () => {
         const res = await fetch(API_URL);
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
         const data = await res.json();
-        setMenuData(data);
-        const cats = Object.keys(data);
+        if (data && Object.keys(data).length > 0) {
+          setMenuData(data);
+          const cats = Object.keys(data);
+          setCategories(cats);
+          if (cats.length > 0) setActiveCategory(cats[0]);
+          return;
+        }
+        throw new Error("Empty menu payload");
+      } catch (err) {
+        console.warn("Backend API unavailable, loading fallback menu data:", err.message);
+        setMenuData(fallbackMenuData);
+        const cats = Object.keys(fallbackMenuData);
         setCategories(cats);
         if (cats.length > 0) setActiveCategory(cats[0]);
-      } catch (err) {
-        console.error("Failed to load menu:", err);
-        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -95,30 +91,65 @@ const Menu = () => {
   }, []);
 
   const MenuCard = ({ item }) => {
+    const fullPrice = item.full || item.price;
+    const halfPrice = item.half;
+
     return (
-      <div className="overflow-hidden rounded-[2rem] border border-[#D4A017]/20 bg-white shadow-xl transition hover:-translate-y-2 hover:shadow-2xl">
-        <div className="relative">
-          <img
-            src={getMenuItemImage(item)}
-            alt={item.name}
-            className="h-64 w-full object-cover bg-[#3A1E12]/10"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "/assets/foodpark-logo.png";
-            }}
-          />
+      <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-[#D4A017]/25 bg-white shadow-lg transition duration-300 hover:-translate-y-1.5 hover:shadow-xl flex flex-col justify-between h-full">
+        <div>
+          <div className="relative">
+            <img
+              src={getMenuItemImage(item)}
+              alt={item.name}
+              className="h-44 sm:h-48 w-full object-cover bg-[#3A1E12]/10"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/assets/foodpark-logo.png";
+              }}
+            />
+            {fullPrice && (
+              <div className="absolute top-3 right-3 rounded-full bg-[#6B0F0F] px-3 py-1 text-xs font-bold text-white shadow-md border border-[#D4A017]/60">
+                ₹{fullPrice}
+              </div>
+            )}
+          </div>
+
+          <div className="p-4 sm:p-5">
+            <h3 className="mb-1.5 font-serif text-lg font-bold text-[#6B0F0F] leading-tight">
+              {item.name}
+            </h3>
+
+            <p className="text-xs leading-5 text-gray-600 mb-3 line-clamp-2">{item.desc}</p>
+          </div>
         </div>
 
-        <div className="p-6">
-          <h3 className="mb-2 font-serif text-xl font-bold text-[#6B0F0F] leading-tight">
-            {item.name}
-          </h3>
+        <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 space-y-2.5">
+          <div className="flex items-center justify-between border-t border-gray-100 pt-2.5 text-[11px] font-semibold text-[#3A1E12]">
+            {fullPrice && (
+              <span className="rounded-full bg-[#F8F1E7] px-2.5 py-0.5 text-[#6B0F0F]">
+                Full: ₹{fullPrice}
+              </span>
+            )}
+            {halfPrice && (
+              <span className="rounded-full bg-[#D4A017]/20 px-2.5 py-0.5 text-[#3A1E12]">
+                Half: ₹{halfPrice}
+              </span>
+            )}
+          </div>
 
-          <p className="text-sm leading-6 text-gray-600 mb-4">{item.desc}</p>
+          <button
+            type="button"
+            onClick={() => openOrderModal({ ...item, category: activeCategory })}
+            className="w-full rounded-xl bg-[#6B0F0F] py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-[#8B1A1A] active:scale-95 flex items-center justify-center gap-1.5 border border-[#D4A017]/40"
+          >
+            <span>Order & Customize</span>
+            <span className="text-[#D4A017]">→</span>
+          </button>
         </div>
       </div>
     );
   };
+
 
   const activeItems = activeCategory ? (menuData[activeCategory] || []) : [];
 
@@ -133,89 +164,67 @@ const Menu = () => {
     );
   }
 
-  if (error) {
-    return (
-      <main className="min-h-screen bg-[#F8F1E7] flex items-center justify-center">
-        <div className="text-center max-w-md px-6">
-          <div className="text-6xl mb-4">⚠️</div>
-          <h2 className="text-2xl font-bold text-[#6B0F0F] mb-2">Menu unavailable</h2>
-          <p className="text-gray-600 mb-4">Could not connect to the server. Please try again later.</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-2 bg-[#6B0F0F] text-white rounded-full font-semibold hover:bg-[#8B1A1A] transition"
-          >
-            Retry
-          </button>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
-      <section className="relative overflow-hidden bg-[#3A1E12] pt-32 pb-24">
-        <motion.div
-          variants={stagger(0.1)}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto max-w-7xl px-6 text-center"
-        >
-          <motion.p variants={fadeUp} className="mb-4 text-sm font-semibold uppercase tracking-[5px] text-[#D4A017]">
-            Our Menu
-          </motion.p>
-
-          <motion.h1 variants={fadeUp} className="mx-auto max-w-5xl font-serif text-5xl font-bold leading-tight text-white md:text-7xl">
-            Authentic Andhra Flavours
-            <span className="block text-[#D4A017]">
-              Crafted Fresh Every Day
-            </span>
-          </motion.h1>
-
-          <motion.p variants={fadeUp} className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-300">
-            Explore traditional meals, spicy curries, village specials, snacks,
-            and refreshing beverages.
-          </motion.p>
-        </motion.div>
-      </section>
-
-      <section className="bg-[#F8F1E7] py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 text-center">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
-              Categories
+      <section className="bg-[#F8F1E7] pt-28 pb-12 sm:pt-32 sm:pb-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mb-8 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[4px] text-[#D4A017] sm:text-sm">
+              Visual Menu Filters
             </p>
 
-            <h2 className="font-serif text-4xl font-bold text-[#6B0F0F] md:text-5xl">
-              Explore Our Menu
+            <h2 className="font-serif text-3xl font-bold text-[#6B0F0F] sm:text-4xl md:text-5xl">
+              Explore By Dish Category
             </h2>
+            <p className="mt-2 text-xs text-gray-600 sm:text-sm">
+              Click any dish photo to filter the menu by category
+            </p>
           </div>
 
-          <div className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide max-w-full justify-start md:justify-center md:flex-wrap whitespace-nowrap">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`rounded-full px-6 py-2.5 text-sm font-semibold shadow-md transition-all duration-200 inline-block active:scale-95 ${
-                  activeCategory === category
-                    ? "bg-[#6B0F0F] text-white"
-                    : "bg-white text-[#6B0F0F] hover:bg-[#D4A017] hover:text-[#3A1E12]"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          {/* Visual Clickable Category Tabs with Dish Thumbnails */}
+          <div className="flex overflow-x-auto pb-5 gap-3 scrollbar-hide max-w-full justify-start md:justify-center md:flex-wrap">
+            {categories.map((category) => {
+              const isSelected = activeCategory === category;
+              const thumb = getCategoryThumbnail(category, menuData);
+
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActiveCategory(category)}
+                  className={`group flex items-center gap-2.5 rounded-full pl-1.5 pr-4 py-1.5 text-xs font-bold transition-all duration-300 inline-flex active:scale-95 border ${
+                    isSelected
+                      ? "bg-[#6B0F0F] text-white border-[#D4A017] ring-2 ring-[#D4A017]/50 shadow-lg"
+                      : "bg-white text-[#3A1E12] border-gray-200 hover:bg-[#F8F1E7] hover:border-[#D4A017] shadow-sm"
+                  }`}
+                >
+                  <div className={`relative h-8 w-8 sm:h-9 sm:w-9 shrink-0 overflow-hidden rounded-full border-2 transition-transform duration-300 ${isSelected ? "border-[#D4A017] scale-105" : "border-[#D4A017]/60 group-hover:scale-110"}`}>
+                    <img
+                      src={thumb}
+                      alt={category}
+                      className="h-full w-full object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/assets/foodpark-logo.png";
+                      }}
+                    />
+                  </div>
+                  <span className="whitespace-nowrap font-serif tracking-wide text-xs sm:text-sm">{category}</span>
+                </button>
+              );
+            })}
           </div>
 
           <motion.div
             variants={stagger(0.06)}
             initial="hidden"
             animate="visible"
-            className="mt-14"
+            className="mt-8 sm:mt-10"
           >
             {activeItems.length ? (
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {activeItems.map((item, index) => (
-                  <motion.div key={`${item.id || item.name}-${index}`} variants={cardV} whileHover={{ y: -8 }} className="mx-auto max-w-md">
+                  <motion.div key={`${item.id || item.name}-${index}`} variants={cardV} whileHover={{ y: -6 }} className="w-full">
                     <MenuCard item={item} />
                   </motion.div>
                 ))}
@@ -229,10 +238,12 @@ const Menu = () => {
         </div>
       </section>
 
+
       <Footer />
     </main>
   );
 };
 
 export default Menu;
+
 

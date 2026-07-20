@@ -59,7 +59,7 @@ const customerReviews = [
     platformColor: "bg-[#E23744] text-white",
     rating: 4,
     dish: "Chicken Mixed Biryani",
-    review: "One of the best biryanis in Kakinada. The rice was perfectly cooked with a beautiful aroma. Delivery was also super fast. Highly recommended for biryani lovers!",
+    review: "One of the best biryanis in Kakinada. The rice was perfectly cooked with a beautiful aroma. Pre-ordering for takeaway saved us so much waiting time. Highly recommended for biryani lovers!",
     date: "May 2025",
   },
   {
@@ -152,25 +152,25 @@ const Home = () => {
           <div className="absolute inset-0 bg-black/55"></div>
         </motion.div>
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-16">
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-28 pb-10 lg:pt-32 lg:pb-16">
           <motion.div
-            className="max-w-3xl -mt-4"
+            className="max-w-3xl -mt-4 lg:-mt-0"
             variants={stagger(0.14)}
             initial="hidden"
             animate="visible"
           >
             <motion.div
               variants={popIn}
-              className="mb-6 inline-flex rounded-full border border-[#D4A017]/50 bg-white/10 px-5 py-2 backdrop-blur-md"
+              className="mb-4 lg:mb-6 inline-flex rounded-full border border-[#D4A017]/50 bg-white/10 px-4 py-1.5 lg:px-5 lg:py-2 backdrop-blur-md"
             >
-              <span className="text-sm font-medium tracking-wider text-[#F8F1E7]">
+              <span className="text-[11px] lg:text-sm font-medium tracking-wider text-[#F8F1E7]">
                 AUTHENTIC VILLAGE DINING EXPERIENCE
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="font-serif text-5xl font-bold leading-tight text-white md:text-7xl"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white"
             >
               Taste The
               <span className="block text-[#D4A017]">
@@ -178,62 +178,72 @@ const Home = () => {
               </span>
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="mt-10">
+            <motion.div variants={fadeUp} className="mt-7 lg:mt-10">
               {/* Ratings Box */}
-              <div className="grid grid-cols-1 gap-6 sm:inline-flex sm:flex-row sm:flex-wrap items-stretch justify-start rounded-[1.25rem] border border-[#D4A017]/30 bg-[#111111]/85 p-5 px-7 shadow-2xl backdrop-blur-md w-full sm:w-auto">
+              <div className="grid grid-cols-1 gap-4 lg:gap-6 sm:inline-flex sm:flex-row sm:flex-wrap items-stretch justify-start rounded-[1.25rem] border border-[#D4A017]/30 bg-[#111111]/85 p-4 px-5 lg:p-5 lg:px-7 shadow-2xl backdrop-blur-md w-full sm:w-auto">
                 
                 {/* Google */}
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
-                    <svg viewBox="0 0 24 24" className="h-5 w-5">
+                    <svg viewBox="0 0 24 24" className="h-4 w-4 lg:h-5 lg:w-5">
                       <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                       <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                       <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                     </svg>
-                    <span className="font-semibold text-white">Google</span>
+                    <span className="font-semibold text-white text-sm lg:text-base">Google</span>
                   </div>
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className="text-2xl font-bold text-white">4.3</span>
-                    <span className="text-[#D4A017] text-[15px] tracking-[2px]">★★★★☆</span>
+                  <div className="mt-1 lg:mt-2 flex items-center gap-2">
+                    <span className="text-xl lg:text-2xl font-bold text-white">4.3</span>
+                    <span className="text-[#D4A017] text-[13px] lg:text-[15px] tracking-[2px]">★★★★☆</span>
                   </div>
-                  <p className="mt-0.5 text-[13px] text-gray-400">2,450+ reviews</p>
+                  <p className="mt-0.5 text-[11px] lg:text-[13px] text-gray-400">2,450+ reviews</p>
                 </div>
 
-                <div className="h-[1px] w-full bg-white/10 sm:h-16 sm:w-px mx-0 sm:mx-2"></div>
+                <div className="h-[1px] w-full bg-white/10 sm:h-12 lg:sm:h-16 sm:w-px mx-0 sm:mx-1 lg:sm:mx-2"></div>
 
                 {/* Swiggy */}
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
-                    <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#FC8019] text-[11px] font-bold text-white shadow-sm">S</div>
-                    <span className="font-semibold text-white">Swiggy</span>
+                    <div className="flex h-4 w-4 lg:h-5 lg:w-5 items-center justify-center rounded bg-[#FC8019] text-[9px] lg:text-[11px] font-bold text-white shadow-sm">S</div>
+                    <span className="font-semibold text-white text-sm lg:text-base">Swiggy</span>
                   </div>
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className="text-2xl font-bold text-white">4.2</span>
-                    <span className="text-[#D4A017] text-[15px] tracking-[2px]">★★★★☆</span>
+                  <div className="mt-1 lg:mt-2 flex items-center gap-2">
+                    <span className="text-xl lg:text-2xl font-bold text-white">4.2</span>
+                    <span className="text-[#D4A017] text-[13px] lg:text-[15px] tracking-[2px]">★★★★☆</span>
                   </div>
-                  <p className="mt-0.5 text-[13px] text-gray-400">73K+ ratings</p>
+                  <p className="mt-0.5 text-[11px] lg:text-[13px] text-gray-400">73K+ ratings</p>
                 </div>
 
-                <div className="h-[1px] w-full bg-white/10 sm:h-16 sm:w-px mx-0 sm:mx-2"></div>
+                <div className="h-[1px] w-full bg-white/10 sm:h-12 lg:sm:h-16 sm:w-px mx-0 sm:mx-1 lg:sm:mx-2"></div>
 
                 {/* Zomato */}
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
-                    <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#E23744] text-[10px] font-bold italic text-white shadow-sm">Z</div>
-                    <span className="font-semibold text-white">Zomato</span>
+                    <div className="flex h-4 w-4 lg:h-5 lg:w-5 items-center justify-center rounded bg-[#E23744] text-[9px] lg:text-[10px] font-bold italic text-white shadow-sm">Z</div>
+                    <span className="font-semibold text-white text-sm lg:text-base">Zomato</span>
                   </div>
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className="text-2xl font-bold text-white">3.7</span>
-                    <span className="text-[#D4A017] text-[15px] tracking-[2px]">★★★★☆</span>
+                  <div className="mt-1 lg:mt-2 flex items-center gap-2">
+                    <span className="text-xl lg:text-2xl font-bold text-white">3.7</span>
+                    <span className="text-[#D4A017] text-[13px] lg:text-[15px] tracking-[2px]">★★★★☆</span>
                   </div>
-                  <p className="mt-0.5 text-[13px] text-gray-400">97.7K+ ratings</p>
+                  <p className="mt-0.5 text-[11px] lg:text-[13px] text-gray-400">97.7K+ ratings</p>
                 </div>
 
               </div>
 
               {/* Action Buttons */}
-              <motion.div variants={stagger(0.1)} className="mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-4 w-full">
+              <motion.div variants={stagger(0.1)} className="mt-5 lg:mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-3 lg:gap-4 w-full">
+                <motion.div variants={cardVariant} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+                  <Link 
+                    to="/menu" 
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#6B0F0F] px-6 py-3 lg:px-8 lg:py-3.5 text-sm lg:text-base font-bold text-white shadow-[0_8px_20px_rgba(107,15,15,0.4)] transition hover:bg-[#8B1A1A] w-full text-center border border-[#D4A017]"
+                  >
+                    <span>Order Direct & Customize</span>
+                    <span className="text-[#D4A017]">→</span>
+                  </Link>
+                </motion.div>
+
                 <motion.a
                   variants={cardVariant}
                   whileHover={{ scale: 1.06 }}
@@ -241,9 +251,9 @@ const Home = () => {
                   href="https://www.swiggy.com/city/kakinada/food-park-family-restaurant-kakinada-rest103033"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FC8019] px-8 py-3.5 font-semibold text-white shadow-[0_8px_20px_rgba(252,128,25,0.3)] transition hover:bg-[#e66f0d] w-full sm:w-auto text-center"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FC8019] px-7 py-3.5 font-semibold text-white shadow-[0_8px_20px_rgba(252,128,25,0.3)] transition hover:bg-[#e66f0d] w-full sm:w-auto text-center"
                 >
-                  Order on Swiggy
+                  Swiggy
                 </motion.a>
 
                 <motion.a
@@ -253,20 +263,12 @@ const Home = () => {
                   href="https://www.zomato.com/kakinada/food-park-family-restaurant-1-kakinada-locality/order"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#E23744] px-8 py-3.5 font-semibold text-white shadow-[0_8px_20px_rgba(226,55,68,0.3)] transition hover:bg-[#c92f3b] w-full sm:w-auto text-center"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#E23744] px-7 py-3.5 font-semibold text-white shadow-[0_8px_20px_rgba(226,55,68,0.3)] transition hover:bg-[#c92f3b] w-full sm:w-auto text-center"
                 >
-                  Order on Zomato
+                  Zomato
                 </motion.a>
-
-                <motion.div variants={cardVariant} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
-                  <Link 
-                    to="/menu" 
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-[#111111]/70 px-8 py-3.5 font-semibold text-white backdrop-blur-md transition hover:bg-white/10 w-full text-center"
-                  >
-                    Explore Menu
-                  </Link>
-                </motion.div>
               </motion.div>
+
             </motion.div>
           </motion.div>
         </div>
@@ -428,8 +430,8 @@ const Home = () => {
   </div>
 </section>
 
-<section className="bg-[#F8F1E7] py-24">
-  <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
+<section className="bg-[#F8F1E7] py-16 sm:py-20 lg:py-16">
+  <div className="mx-auto grid max-w-7xl items-center gap-10 lg:gap-14 px-6 lg:grid-cols-2">
     <motion.div
       variants={fadeLeft}
       initial="hidden"
@@ -440,7 +442,7 @@ const Home = () => {
       <img
         src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=900&q=80"
         alt="Village hotel ambience"
-        className="h-[520px] w-full rounded-[2.5rem] object-cover shadow-2xl"
+        className="h-[350px] sm:h-[420px] lg:h-[460px] w-full rounded-[2rem] lg:rounded-[2.5rem] object-cover shadow-2xl"
       />
 
       <motion.div
@@ -448,10 +450,10 @@ const Home = () => {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 0.4, type: "spring", stiffness: 260, damping: 20 }}
         viewport={vp}
-        className="absolute -bottom-8 right-8 rounded-3xl bg-[#6B0F0F] p-6 text-white shadow-xl"
+        className="absolute -bottom-6 right-6 lg:-bottom-8 lg:right-8 rounded-3xl bg-[#6B0F0F] p-4 lg:p-6 text-white shadow-xl"
       >
-        <h3 className="font-serif text-4xl font-bold">18+</h3>
-        <p className="text-sm font-medium">Years of Taste</p>
+        <h3 className="font-serif text-3xl lg:text-4xl font-bold">18+</h3>
+        <p className="text-xs lg:text-sm font-medium">Years of Taste</p>
       </motion.div>
     </motion.div>
 
@@ -461,38 +463,38 @@ const Home = () => {
       whileInView="visible"
       viewport={vp}
     >
-      <motion.p variants={fadeUp} className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
+      <motion.p variants={fadeUp} className="mb-2 lg:mb-3 text-xs lg:text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
         About Our Hotel
       </motion.p>
 
-      <motion.h2 variants={fadeUp} className="font-serif text-4xl font-bold leading-tight text-[#6B0F0F] md:text-5xl">
+      <motion.h2 variants={fadeUp} className="font-serif text-3xl lg:text-5xl font-bold leading-tight text-[#6B0F0F]">
         Bringing Village Hospitality To Every Plate
       </motion.h2>
 
-      <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-[#3A1E12]/75">
+      <motion.p variants={fadeUp} className="mt-4 lg:mt-6 text-base lg:text-lg leading-7 lg:leading-8 text-[#3A1E12]/75">
         Our hotel is inspired by rural Andhra homes where food is cooked with
         patience, served with love, and enjoyed together. Every dish carries the
         warmth of tradition, local ingredients, and homely taste.
       </motion.p>
 
-      <motion.div variants={stagger(0.12)} className="mt-8 grid gap-5 sm:grid-cols-2">
-        <motion.div variants={cardVariant} whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }} className="rounded-2xl bg-white p-5 shadow-md">
-          <h4 className="font-bold text-[#6B0F0F]">Traditional Taste</h4>
-          <p className="mt-2 text-sm text-gray-600">
+      <motion.div variants={stagger(0.12)} className="mt-6 lg:mt-8 grid gap-4 lg:gap-5 sm:grid-cols-2">
+        <motion.div variants={cardVariant} whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }} className="rounded-2xl bg-white p-4 lg:p-5 shadow-md">
+          <h4 className="font-bold text-[#6B0F0F] text-sm lg:text-base">Traditional Taste</h4>
+          <p className="mt-1 lg:mt-2 text-xs lg:text-sm text-gray-600">
             Recipes inspired by village kitchens.
           </p>
         </motion.div>
 
-        <motion.div variants={cardVariant} whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }} className="rounded-2xl bg-white p-5 shadow-md">
-          <h4 className="font-bold text-[#6B0F0F]">Homely Service</h4>
-          <p className="mt-2 text-sm text-gray-600">
+        <motion.div variants={cardVariant} whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }} className="rounded-2xl bg-white p-4 lg:p-5 shadow-md">
+          <h4 className="font-bold text-[#6B0F0F] text-sm lg:text-base">Homely Service</h4>
+          <p className="mt-1 lg:mt-2 text-xs lg:text-sm text-gray-600">
             Warm serving with authentic care.
           </p>
         </motion.div>
       </motion.div>
 
       <motion.div variants={fadeUp} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-        <Link to="/about" className="mt-9 inline-block rounded-full bg-[#6B0F0F] px-8 py-4 font-semibold text-white transition hover:bg-[#3A1E12]">
+        <Link to="/about" className="mt-7 lg:mt-9 inline-block rounded-full bg-[#6B0F0F] px-6 py-3 lg:px-8 lg:py-4 text-sm lg:text-base font-semibold text-white transition hover:bg-[#3A1E12]">
           Know More About Us
         </Link>
       </motion.div>
@@ -536,7 +538,7 @@ const Home = () => {
         {
           title: "Restaurant of the Year",
           org: "Swiggy Awards 2025",
-          desc: "Recognized as the top-rated traditional restaurant in Kakinada for exceptional food quality and delivery standards.",
+          desc: "Recognized as the top-rated traditional restaurant in Kakinada for exceptional food quality and fast takeaway service.",
           img: swiggyAwardImg,
           themeColor: "#FC8019",
           badgeText: "Swiggy Certified",
@@ -717,17 +719,11 @@ const Home = () => {
                 {/* Divider */}
                 <div className="w-px bg-white/20 my-1"></div>
                 
-                {/* Delivery */}
-                <div className="flex flex-col justify-center">
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-red-200">Delivery</p>
-                  <div className="flex items-baseline gap-1 mt-0.5">
-                    <span className="font-serif text-2xl font-bold text-white drop-shadow-sm">3.7</span>
-                    <span className="text-red-200 text-[10px] font-bold">/5</span>
-                  </div>
-                  <div className="mt-1 flex items-center gap-1.5">
-                    <div className="flex gap-0.5 text-yellow-300 text-[9px] drop-shadow-sm">★★★★☆</div>
-                    <span className="rounded bg-white/20 px-1.5 py-0.5 text-[9px] font-bold text-white shadow-sm border border-white/10">97.7K</span>
-                  </div>
+                {/* Takeaway */}
+                <div className="flex flex-col items-center">
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-red-200">Takeaway</p>
+                  <p className="text-xl font-bold text-white mt-1">Available</p>
+                  <p className="text-[10px] text-gray-400 mt-1">Skip the Wait</p>
                 </div>
 
               </div>
