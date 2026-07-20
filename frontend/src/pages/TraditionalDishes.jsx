@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { viewport, fadeUp, staggerContainer, cardVariant } from "../hooks/useScrollAnimation";
 import Footer from "../components/Footer";
+import { useCart } from "../context/CartContext";
 import chickenFriedRiceImg from "../assets/chicken fried rice 1.jpg";
 import chickenBonelessImg from "../assets/boneless 1.jpg";
 import chickenMixedBiryaniImg from "../assets/chicken mixed biryani.png";
@@ -9,6 +10,53 @@ import mixedVegBiryaniImg from "../assets/mixed veg biryani.png";
 import hongkongChickenImg from "../assets/hongkong chicken.jpg";
 
 const TraditionalDishes = () => {
+  const { openOrderModal } = useCart();
+
+  const dishesList = [
+    {
+      name: "Special Chicken Fried Rice",
+      img: chickenFriedRiceImg,
+      full: 160,
+      half: 110,
+      desc: "Fragrant stir-fried rice tossed with tender chicken, fresh vegetables, egg, and signature restaurant spices.",
+    },
+    {
+      name: "Chicken Boneless",
+      img: chickenBonelessImg,
+      full: 180,
+      half: 130,
+      desc: "Juicy boneless chicken pieces marinated in local spices and deep-fried to a golden crunch.",
+    },
+    {
+      name: "Chicken Mixed Biryani",
+      img: chickenMixedBiryaniImg,
+      full: 250,
+      half: null,
+      desc: "Fragrant basmati rice layered with juicy spiced chicken, hard-boiled egg, and aromatic herbs.",
+    },
+    {
+      name: "Thumsup Chicken",
+      img: thumsupChickenImg,
+      full: 220,
+      half: null,
+      desc: "Juicy chicken wings glazed in a rich, sweet and spicy Thums Up reduction sauce with curry leaves.",
+    },
+    {
+      name: "Mixed Veg Biryani",
+      img: mixedVegBiryaniImg,
+      full: 150,
+      half: 100,
+      desc: "Aromatic basmati rice cooked dum-style with seasonal vegetables, paneer cubes, and fresh mint.",
+    },
+    {
+      name: "Hongkong Chicken",
+      img: hongkongChickenImg,
+      full: 190,
+      half: 140,
+      desc: "Stir-fried glazed chicken tossed with colorful bell peppers, cashews, and a savory-sweet sauce.",
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-[#F8F1E7]">
       {/* Traditional Dishes Hero */}
@@ -35,89 +83,77 @@ const TraditionalDishes = () => {
       </section>
 
       {/* Signature Rural Dishes */}
-<section className="bg-[#F8F1E7] py-24">
-  <div className="mx-auto max-w-7xl px-6">
-    <motion.div
-      variants={staggerContainer(0.1)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewport}
-      className="mb-14 text-center"
-    >
-      <motion.p variants={fadeUp} className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
-        Signature Recipes
-      </motion.p>
+      <section className="bg-[#F8F1E7] py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            variants={staggerContainer(0.1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            className="mb-14 text-center"
+          >
+            <motion.p variants={fadeUp} className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#D4A017]">
+              Signature Recipes
+            </motion.p>
 
-      <motion.h2 variants={fadeUp} className="font-serif text-4xl font-bold text-[#6B0F0F] md:text-5xl">
-        Signature Rural Dishes
-      </motion.h2>
-    </motion.div>
+            <motion.h2 variants={fadeUp} className="font-serif text-4xl font-bold text-[#6B0F0F] md:text-5xl">
+              Signature Rural Dishes
+            </motion.h2>
+          </motion.div>
 
-    <motion.div
-      variants={staggerContainer(0.12)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewport}
-      className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-    >
-      {[
-        {
-          name: "Special Chicken Fried Rice",
-          img: chickenFriedRiceImg,
-          desc: "Fragrant stir-fried rice tossed with tender chicken, fresh vegetables, egg, and signature restaurant spices.",
-        },
-        {
-          name: "Chicken Boneless",
-          img: chickenBonelessImg,
-          desc: "Juicy boneless chicken pieces marinated in local spices and deep-fried to a golden crunch.",
-        },
-        {
-          name: "Chicken Mixed Biryani",
-          img: chickenMixedBiryaniImg,
-          desc: "Fragrant basmati rice layered with juicy spiced chicken, hard-boiled egg, and aromatic herbs.",
-        },
-        {
-          name: "Thumsup Chicken",
-          img: thumsupChickenImg,
-          desc: "Juicy chicken wings glazed in a rich, sweet and spicy Thums Up reduction sauce with curry leaves.",
-        },
-        {
-          name: "Mixed Veg Biryani",
-          img: mixedVegBiryaniImg,
-          desc: "Aromatic basmati rice cooked dum-style with seasonal vegetables, paneer cubes, and fresh mint.",
-        },
-        {
-          name: "Hongkong Chicken",
-          img: hongkongChickenImg,
-          desc: "Stir-fried glazed chicken tossed with colorful bell peppers, cashews, and a savory-sweet sauce.",
-        },
-      ].map((dish, index) => (
-        <motion.div
-          key={index}
-          variants={cardVariant}
-          whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
-          className="group overflow-hidden rounded-[2rem] bg-white shadow-xl transition-shadow"
-        >
-          <motion.img
-            src={dish.img}
-            alt={dish.name}
-            className="h-72 w-full object-cover transition duration-500 group-hover:scale-110"
-          />
+          <motion.div
+            variants={staggerContainer(0.12)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          >
+            {dishesList.map((dish, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariant}
+                whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
+                className="group overflow-hidden rounded-[2rem] bg-white shadow-xl transition-shadow flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative">
+                    <motion.img
+                      src={dish.img}
+                      alt={dish.name}
+                      className="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 right-4 rounded-full bg-[#6B0F0F] px-3.5 py-1 text-xs font-bold text-white border border-[#D4A017]">
+                      ₹{dish.full}
+                    </div>
+                  </div>
 
-          <div className="p-7">
-            <h3 className="font-serif text-2xl font-bold text-[#6B0F0F]">
-              {dish.name}
-            </h3>
+                  <div className="p-6">
+                    <h3 className="font-serif text-2xl font-bold text-[#6B0F0F]">
+                      {dish.name}
+                    </h3>
 
-            <p className="mt-3 text-sm leading-7 text-gray-600">
-              {dish.desc || "Prepared with traditional Andhra spices and village-style cooking."}
-            </p>
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
+                    <p className="mt-2 text-sm leading-6 text-gray-600">
+                      {dish.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0">
+                  <button
+                    type="button"
+                    onClick={() => openOrderModal({ name: dish.name, image: dish.img, desc: dish.desc, full: dish.full, half: dish.half })}
+                    className="w-full rounded-2xl bg-[#6B0F0F] py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-[#8B1A1A] active:scale-95 flex items-center justify-center gap-2 border border-[#D4A017]/40"
+                  >
+                    <span>Order & Customize</span>
+                    <span className="text-[#D4A017]">→</span>
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
 
 <section className="bg-[#FFF8EE] py-24">
   <div className="mx-auto max-w-7xl px-6">

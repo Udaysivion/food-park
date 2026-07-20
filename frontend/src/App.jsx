@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import ScrollToTop from "./components/ScrollToTop";
+import { CartProvider } from "./context/CartContext";
+import OrderModal from "./components/OrderModal";
+import CartDrawer from "./components/CartDrawer";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -32,26 +35,29 @@ const AdminRedirect = () => {
 
 const App = () => {
   return (
-    <>
+    <CartProvider>
       <ScrollToTop />
+      <OrderModal />
+      <CartDrawer />
       <Routes>
         {/* Admin panel — served by Express backend */}
         <Route path="/admin" element={<AdminRedirect />} />
         <Route path="/admin/*" element={<AdminRedirect />} />
 
         <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/traditional-dishes" element={<TraditionalDishes />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/dish/:id" element={<DishDetails />} />
-        <Route path="/menu/detail/:category/:index" element={<MenuDetail />} />
-      </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/traditional-dishes" element={<TraditionalDishes />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dish/:id" element={<DishDetails />} />
+          <Route path="/menu/detail/:category/:index" element={<MenuDetail />} />
+        </Route>
       </Routes>
-    </>
+    </CartProvider>
   );
 };
 
 export default App;
+

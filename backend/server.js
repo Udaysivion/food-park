@@ -1,4 +1,4 @@
-﻿const express = require("express");
+const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
@@ -14,7 +14,10 @@ app.use("/admin", express.static(path.join(__dirname, "admin")));
 
 // API routes
 const menuRouter = require("./routes/menu");
+const ordersRouter = require("./routes/orders");
 app.use("/api/menu", menuRouter);
+app.use("/api/orders", ordersRouter);
+
 
 // Health check
 app.get("/api/health", (req, res) => res.json({ status: "ok", timestamp: new Date().toISOString() }));
