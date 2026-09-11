@@ -30,12 +30,12 @@ const AboutHero = () => {
 
             <div className="absolute inset-0 bg-gradient-to-t from-[#3A1E12]/70 to-transparent"></div>
 
-            <div className="absolute bottom-8 left-8 rounded-3xl border border-[#D4A017]/40 bg-white/15 p-6 text-white backdrop-blur-md">
+            <div className="absolute bottom-8 left-8 rounded-3xl border border-[#D4A017]/40 bg-white/15 p-6 text-white backdrop-blur-md shadow-lg">
               <h3 className="font-serif text-4xl font-bold text-[#D4A017]">
                 Since 1998
               </h3>
-              <p className="mt-2 text-sm">
-                Serving authentic village-style hospitality
+              <p className="mt-2 text-sm font-medium text-amber-100/90">
+                Serving authentic village-style hospitality & culinary heritage
               </p>
             </div>
           </motion.div>
