@@ -11,7 +11,7 @@ const Footer = () => {
               <img
                 src={logoImg}
                 alt="Food Park Logo"
-                className="h-10 w-10 rounded-full object-cover ring-2 ring-[#D4A017]"
+                className="h-12 w-12 rounded-full object-contain bg-white p-1 ring-2 ring-[#D4A017] shadow-md"
               />
               <h2 className="font-serif text-3xl font-bold text-[#D4A017]">
                 Food Park

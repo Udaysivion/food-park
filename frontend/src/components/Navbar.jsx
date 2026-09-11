@@ -46,7 +46,7 @@ const Navbar = () => {
           <img
             src={logoImg}
             alt="Food Park Logo"
-            className="h-9 w-9 sm:h-10 sm:w-10 rounded-full object-cover shadow-md ring-2 ring-[#D4A017]/60"
+            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full object-contain bg-white p-0.5 shadow-md ring-2 ring-[#D4A017]/60"
           />
           <div>
             <h1 className="font-serif text-lg font-bold tracking-wide text-[#6B0F0F] sm:text-xl leading-none">
